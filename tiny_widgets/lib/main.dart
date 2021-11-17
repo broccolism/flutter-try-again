@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:tiny_widgets/route.dart';
 import 'package:tiny_widgets/src/constants.dart';
 import 'package:tiny_widgets/view/screen/home_screen.dart';
 
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: MyConstants.APP_NAME,
-      home: HomeScreen(),
+      home: const HomeScreen(),
+      getPages: MyPages.pages,
     );
   }
 }

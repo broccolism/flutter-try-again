@@ -1,5 +1,6 @@
 import 'package:get/route_manager.dart';
 import 'package:tiny_widgets/view/screen/home_screen.dart';
+import 'package:tiny_widgets/view/screen/screens.dart';
 
 class MyPages {
   MyPages._();
@@ -8,6 +9,10 @@ class MyPages {
     GetPage(
       name: HomeScreen.name,
       page: () => const HomeScreen(),
+    ),
+    GetPage(
+      name: DropdownScreen.name,
+      page: () => const DropdownScreen(),
     ),
   ];
 }

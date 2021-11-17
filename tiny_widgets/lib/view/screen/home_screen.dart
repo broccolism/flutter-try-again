@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:tiny_widgets/view/screen/dropdown_screen.dart';
+import 'package:tiny_widgets/view/screen/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = "/home_screen";
@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => Get.toNamed(DropdownScreen.name),
+              onPressed: () => Get.toNamed(SearchScreen.name),
               child: Text(
                 OPEN_OVERLAY_ENTRY_BUTTON,
               ),

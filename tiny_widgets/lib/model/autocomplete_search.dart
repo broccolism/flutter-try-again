@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DropdownMenuItem {
+class SearchResultItem {
   final String name;
   final Icon icon;
 
-  DropdownMenuItem({
+  SearchResultItem({
     required this.name,
     required this.icon,
   });
 
   @override
-  String toString() => 'DropdownMenuItem(name: $name, icon: $icon)';
+  String toString() => 'SearchResultItem(name: $name, icon: $icon)';
 }

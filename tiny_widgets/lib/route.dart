@@ -11,8 +11,8 @@ class MyPages {
       page: () => const HomeScreen(),
     ),
     GetPage(
-      name: DropdownScreen.name,
-      page: () => const DropdownScreen(),
+      name: SearchScreen.name,
+      page: () => const SearchScreen(),
     ),
   ];
 }

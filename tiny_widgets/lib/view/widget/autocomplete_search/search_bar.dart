@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
 class SearchBar extends StatelessWidget {
@@ -15,6 +17,7 @@ class SearchBar extends StatelessWidget {
       borderRadius: BorderRadius.circular(MyConstants.BORDER_RADIUS),
       child: TextField(
         cursorColor: Colors.yellow[800],
+        style: Theme.of(Get.context!).textTheme.headline5,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12,
@@ -23,6 +26,9 @@ class SearchBar extends StatelessWidget {
           border: _border(),
           enabledBorder: _border(),
           focusedBorder: _border(),
+          prefixIcon: Icon(
+            CupertinoIcons.search,
+          ),
         ),
       ),
     );

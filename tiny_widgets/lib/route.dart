@@ -2,6 +2,8 @@ import 'package:get/route_manager.dart';
 import 'package:tiny_widgets/view/screen/home_screen.dart';
 import 'package:tiny_widgets/view/screen/screens.dart';
 
+import 'binding/bindings.dart';
+
 class MyPages {
   MyPages._();
 
@@ -13,6 +15,7 @@ class MyPages {
     GetPage(
       name: SearchScreen.name,
       page: () => const SearchScreen(),
+      binding: SearchBarBinding(),
     ),
   ];
 }

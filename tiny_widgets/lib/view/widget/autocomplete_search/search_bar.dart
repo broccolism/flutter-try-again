@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
-class SearchBar extends StatelessWidget {
+class SearchBar extends GetView<SearchBarController> {
   const SearchBar({Key? key}) : super(key: key);
 
   @override
@@ -16,6 +17,7 @@ class SearchBar extends StatelessWidget {
     return Material(
       borderRadius: BorderRadius.circular(MyConstants.BORDER_RADIUS),
       child: TextField(
+        controller: controller.keywordController,
         cursorColor: Colors.yellow[800],
         style: Theme.of(Get.context!).textTheme.headline5,
         decoration: InputDecoration(
@@ -28,6 +30,11 @@ class SearchBar extends StatelessWidget {
           focusedBorder: _border(),
           prefixIcon: Icon(
             CupertinoIcons.search,
+          ),
+          suffixIcon: IconButton(
+            color: Colors.blueGrey[300],
+            icon: Icon(CupertinoIcons.clear),
+            onPressed: controller.keywordController.clear,
           ),
         ),
       ),

@@ -20,6 +20,7 @@ class SearchBar extends GetView<SearchBarController> {
         controller: controller.keywordController,
         cursorColor: Colors.yellow[800],
         style: Theme.of(Get.context!).textTheme.headline5,
+        onChanged: controller.onChangeTextField,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12,

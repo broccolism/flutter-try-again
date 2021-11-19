@@ -26,7 +26,7 @@ class SearchScreen extends StatelessWidget {
           ..._colorFields(),
           Container(
             margin: MyConstants.SCREEN_HORIZONTAL_MARGIN,
-            child: SearchBar(),
+            child: AutoCompleteSearch(),
           ),
           ..._colorFields(reversed: true),
         ],

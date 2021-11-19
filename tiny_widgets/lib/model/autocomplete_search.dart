@@ -1,14 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SearchResultItem {
+class SearchResult {
   final String name;
   final Icon icon;
 
-  SearchResultItem({
+  SearchResult({
     required this.name,
     required this.icon,
   });
 
   @override
-  String toString() => 'SearchResultItem(name: $name, icon: $icon)';
+  String toString() => 'SearchResult(name: $name, icon: $icon)';
+
+  static SearchResult get sample => SearchResult(
+        name: "sample search result",
+        icon: Icon(CupertinoIcons.burn),
+      );
 }

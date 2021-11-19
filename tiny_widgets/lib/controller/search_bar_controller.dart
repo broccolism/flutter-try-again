@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+import 'package:tiny_widgets/model/models.dart';
 
 class SearchBarController extends GetxController {
   late final TextEditingController _keywordController;
+
+  final RxList<SearchResult> _curResults = <SearchResult>[].obs;
 
   @override
   void onInit() {
@@ -17,4 +20,17 @@ class SearchBarController extends GetxController {
   }
 
   TextEditingController get keywordController => _keywordController;
+  List<SearchResult> get curResults => _curResults;
+
+  void onChangeTextField(String input) {
+    if (input.isEmpty) {
+      _curResults.value = [];
+    } else {
+      _curResults.value = [
+        SearchResult.sample,
+        SearchResult.sample,
+        SearchResult.sample,
+      ];
+    }
+  }
 }

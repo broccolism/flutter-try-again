@@ -35,6 +35,11 @@ class SearchBarController extends GetxController {
     }
   }
 
+  void onClearTextField() {
+    _keywordController.clear();
+    _curResults.value = [];
+  }
+
   void onTapAutocompleteItem(SearchResult item) {
     _keywordController.text = item.name;
     _curResults.value = [];

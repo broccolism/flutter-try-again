@@ -35,7 +35,7 @@ class SearchBar extends GetView<SearchBarController> {
           suffixIcon: IconButton(
             color: Colors.blueGrey[300],
             icon: Icon(CupertinoIcons.clear),
-            onPressed: controller.keywordController.clear,
+            onPressed: controller.onClearTextField,
           ),
         ),
       ),

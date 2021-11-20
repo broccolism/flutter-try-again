@@ -22,10 +22,8 @@ class AutoCompleteResult extends GetView<SearchBarController> {
 
   Widget _itemBuilder(BuildContext context, int index) {
     return GestureDetector(
-      onTap: () {
-        log("'${controller.curResults[index].name}' tapped.",
-            name: "AutocompleteResult._itemBuilder");
-      },
+      onTap: () =>
+          controller.onTapAutocompleteItem(controller.curResults[index]),
       child: Container(
         color: Colors.white,
         child: Text(

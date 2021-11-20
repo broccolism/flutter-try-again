@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
+import 'package:tiny_widgets/util/ui.dart';
 
 class SearchBarController extends GetxController {
   late final TextEditingController _keywordController;
@@ -32,5 +33,11 @@ class SearchBarController extends GetxController {
         SearchResult.sample,
       ];
     }
+  }
+
+  void onTapAutocompleteItem(SearchResult item) {
+    _keywordController.text = item.name;
+    _curResults.value = [];
+    MyUiUtils.moveTextEditingCursorToBack(_keywordController);
   }
 }

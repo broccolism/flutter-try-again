@@ -18,9 +18,9 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   final GlobalKey _searchBarKey = GlobalKey();
 
   @override
-  void initState() {
-    super.initState();
-    // overlayEntry = OverlayEntry(builder: _overlayEntryBuilder);
+  void dispose() {
+    overlayEntry.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,8 +33,10 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   }
 
   void showOverlay() {
-    OverlayState overlayState = Overlay.of(context)!;
-    overlayState.insert(overlayEntry);
+    if (!overlayEntry.mounted) {
+      OverlayState overlayState = Overlay.of(context)!;
+      overlayState.insert(overlayEntry);
+    }
   }
 
   void removeOverlay() {

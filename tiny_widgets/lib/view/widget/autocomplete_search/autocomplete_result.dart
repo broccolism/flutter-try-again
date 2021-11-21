@@ -14,15 +14,13 @@ class AutoCompleteResult extends GetView<SearchBarController> {
     return Container(
       color: Colors.grey[50],
       child: Obx(
-        () => controller.curResults.isNotEmpty
-            ? ListView.separated(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                itemCount: controller.curResults.length,
-                itemBuilder: _itemBuilder,
-                separatorBuilder: _separatorBuilder,
-              )
-            : SizedBox(),
+        () => ListView.separated(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          itemCount: controller.curResults.length,
+          itemBuilder: _itemBuilder,
+          separatorBuilder: _separatorBuilder,
+        ),
       ),
     );
   }

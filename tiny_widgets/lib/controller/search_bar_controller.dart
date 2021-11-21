@@ -23,15 +23,21 @@ class SearchBarController extends GetxController {
   TextEditingController get keywordController => _keywordController;
   List<SearchResult> get curResults => _curResults;
 
-  void onChangeTextField(String input) {
+  void onChangeTextField({
+    required String input,
+    required void Function() showOverlay,
+    required void Function() removeOverlay,
+  }) {
     if (input.isEmpty) {
       _curResults.value = [];
+      removeOverlay();
     } else {
       _curResults.value = [
         SearchResult.sample,
         SearchResult.sample,
         SearchResult.sample,
       ];
+      showOverlay();
     }
   }
 

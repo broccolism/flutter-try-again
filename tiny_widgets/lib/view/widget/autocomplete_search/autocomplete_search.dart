@@ -16,6 +16,7 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   late final OverlayEntry overlayEntry =
       OverlayEntry(builder: _overlayEntryBuilder);
   final GlobalKey _searchBarKey = GlobalKey();
+  final LayerLink _searchBarLink = LayerLink();
 
   @override
   void dispose() {
@@ -25,10 +26,13 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
 
   @override
   Widget build(BuildContext context) {
-    return SearchBar(
-      key: _searchBarKey,
-      showOverlay: showOverlay,
-      removeOverlay: removeOverlay,
+    return CompositedTransformTarget(
+      link: _searchBarLink,
+      child: SearchBar(
+        key: _searchBarKey,
+        showOverlay: showOverlay,
+        removeOverlay: removeOverlay,
+      ),
     );
   }
 
@@ -47,12 +51,18 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
 
   Widget _overlayEntryBuilder(BuildContext context) {
     Offset position = _getOverlayEntryPosition();
+    Size size = _getOverlayEntrySize();
 
     return Positioned(
       left: position.dx,
       top: position.dy,
       width: Get.size.width - MyConstants.SCREEN_HORIZONTAL_MARGIN.horizontal,
-      child: AutoCompleteResult(),
+      child: CompositedTransformFollower(
+        link: _searchBarLink,
+        showWhenUnlinked: false,
+        offset: Offset(0.0, size.height),
+        child: AutoCompleteResult(),
+      ),
     );
   }
 
@@ -61,5 +71,11 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
         _searchBarKey.currentContext!.findRenderObject()! as RenderBox;
     return Offset(renderBox.localToGlobal(Offset.zero).dx,
         renderBox.localToGlobal(Offset.zero).dy + renderBox.size.height);
+  }
+
+  Size _getOverlayEntrySize() {
+    RenderBox renderBox =
+        _searchBarKey.currentContext!.findRenderObject()! as RenderBox;
+    return renderBox.size;
   }
 }

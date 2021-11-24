@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
+import 'package:tiny_widgets/repository/search_repository.dart';
 import 'package:tiny_widgets/util/ui.dart';
 
 class SearchBarController extends GetxController {
+  final SearchRepository searchRepo;
+
   late final TextEditingController _keywordController;
 
   final RxList<SearchResult> _curResults = <SearchResult>[].obs;
+
+  SearchBarController({required this.searchRepo});
 
   @override
   void onInit() {
@@ -37,6 +42,7 @@ class SearchBarController extends GetxController {
         SearchResult.sample,
         SearchResult.sample,
       ];
+      searchRepo.searchOnGoogle();
       showOverlay();
     }
   }
@@ -51,4 +57,6 @@ class SearchBarController extends GetxController {
     _curResults.value = [];
     MyUiUtils.moveTextEditingCursorToBack(_keywordController);
   }
+
+  Future<void> searchInGoogle(String keyword) async {}
 }

@@ -6,6 +6,7 @@ import 'package:tiny_widgets/util/ui.dart';
 
 class SearchBarController extends GetxController {
   final SearchRepository searchRepo;
+  SearchBarController({required this.searchRepo});
 
   late final void Function() _insertOverlay;
   late final void Function() _removeOverlay;
@@ -13,10 +14,12 @@ class SearchBarController extends GetxController {
   late final RxString _curKeyword = "".obs;
   final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
-  SearchBarController({required this.searchRepo});
-  static SearchBarController get to => Get.find();
-
   static const int MIN_KEYWORD_LENGTH = 2;
+
+  TextEditingController get keywordController => _keywordController;
+  List<GoogleSearch> get curResults => _curResults;
+  bool get hasResult => _curResults.isNotEmpty;
+  static SearchBarController get to => Get.find();
 
   @override
   void onInit() {
@@ -34,11 +37,8 @@ class SearchBarController extends GetxController {
     super.onClose();
   }
 
-  TextEditingController get keywordController => _keywordController;
-  List<GoogleSearch> get curResults => _curResults;
-
   void handleKeyword(String input) {
-    if (input.isEmpty) {
+    if (input.isEmpty || input.length < MIN_KEYWORD_LENGTH) {
       _curResults.value = [];
       _removeOverlay();
     } else if (input.length >= MIN_KEYWORD_LENGTH) {

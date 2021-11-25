@@ -13,6 +13,9 @@ class AutoCompleteResult extends GetView<SearchBarController> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey[50],
+      constraints: BoxConstraints(
+        maxHeight: 340,
+      ),
       child: Obx(
         () => ListView.separated(
           padding: EdgeInsets.zero,

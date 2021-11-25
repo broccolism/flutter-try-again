@@ -7,16 +7,25 @@ import 'package:tiny_widgets/util/ui.dart';
 class SearchBarController extends GetxController {
   final SearchRepository searchRepo;
 
-  late final TextEditingController _keywordController;
-
+  late final void Function() _insertOverlay;
+  late final void Function() _removeOverlay;
+  late final TextEditingController _keywordController = TextEditingController();
+  late final RxString _curKeyword = "".obs;
   final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
   SearchBarController({required this.searchRepo});
+  static SearchBarController get to => Get.find();
+
+  static const int MIN_KEYWORD_LENGTH = 2;
 
   @override
   void onInit() {
     super.onInit();
-    _keywordController = TextEditingController();
+    debounce(
+      _curKeyword,
+      handleKeyword,
+      time: Duration(milliseconds: 500),
+    );
   }
 
   @override
@@ -28,18 +37,21 @@ class SearchBarController extends GetxController {
   TextEditingController get keywordController => _keywordController;
   List<GoogleSearch> get curResults => _curResults;
 
-  void onChangeTextField({
-    required String input,
-    required void Function() showOverlay,
-    required void Function() removeOverlay,
-  }) {
+  void handleKeyword(String input) {
     if (input.isEmpty) {
       _curResults.value = [];
-      removeOverlay();
-    } else {
-      searchOnGoogle("");
-      showOverlay();
+      _removeOverlay();
+    } else if (input.length >= MIN_KEYWORD_LENGTH) {
+      searchOnGoogle(input);
+      _insertOverlay();
     }
+  }
+
+  void initOverlayHandlers(
+      {required void Function() insertOverlay,
+      required void Function() removeOverlay}) {
+    _insertOverlay = insertOverlay;
+    _removeOverlay = removeOverlay;
   }
 
   void onClearTextField() {
@@ -54,6 +66,6 @@ class SearchBarController extends GetxController {
   }
 
   Future<void> searchOnGoogle(String keyword) async {
-    _curResults.value = await searchRepo.searchOnGoogle();
+    _curResults.value = await searchRepo.searchOnGoogle(keyword);
   }
 }

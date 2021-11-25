@@ -6,12 +6,8 @@ import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
 class SearchBar extends GetView<SearchBarController> {
-  final void Function() showOverlay;
-  final void Function() removeOverlay;
   const SearchBar({
     Key? key,
-    required this.showOverlay,
-    required this.removeOverlay,
   }) : super(key: key);
 
   @override
@@ -26,11 +22,7 @@ class SearchBar extends GetView<SearchBarController> {
         controller: controller.keywordController,
         cursorColor: Colors.yellow[800],
         style: Theme.of(Get.context!).textTheme.headline5,
-        onChanged: (String input) => controller.onChangeTextField(
-          input: input,
-          showOverlay: showOverlay,
-          removeOverlay: removeOverlay,
-        ),
+        onChanged: controller.handleKeyword,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12,

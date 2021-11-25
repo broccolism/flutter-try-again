@@ -6,7 +6,7 @@ import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/provider/search_provider.dart';
 
 abstract class AbstractSearchRepository {
-  Future<List<GoogleSearch>> searchOnGoogle();
+  Future<List<GoogleSearch>> searchOnGoogle(String keyword);
 }
 
 class SearchRepository extends GetxService implements AbstractSearchRepository {
@@ -15,8 +15,8 @@ class SearchRepository extends GetxService implements AbstractSearchRepository {
   SearchRepository({required this.searchProvider});
 
   @override
-  Future<List<GoogleSearch>> searchOnGoogle() async {
-    Response res = await searchProvider.searchOnGoogle();
+  Future<List<GoogleSearch>> searchOnGoogle(String keyword) async {
+    Response res = await searchProvider.searchOnGoogle(keyword);
     Map<String, dynamic> responseBody = Map.from(res.body);
     List<GoogleSearch> searchItems = List.from(responseBody['items'])
         .map((item) => GoogleSearch.fromMap(item))

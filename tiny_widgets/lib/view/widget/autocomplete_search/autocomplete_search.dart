@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:tiny_widgets/controller/search_bar_controller.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
 import '../widgets.dart';
@@ -19,6 +20,13 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   final LayerLink _searchBarLink = LayerLink();
 
   @override
+  void initState() {
+    super.initState();
+    SearchBarController.to.initOverlayHandlers(
+        insertOverlay: insertOverlay, removeOverlay: removeOverlay);
+  }
+
+  @override
   void dispose() {
     overlayEntry.dispose();
     super.dispose();
@@ -30,13 +38,11 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
       link: _searchBarLink,
       child: SearchBar(
         key: _searchBarKey,
-        showOverlay: showOverlay,
-        removeOverlay: removeOverlay,
       ),
     );
   }
 
-  void showOverlay() {
+  void insertOverlay() {
     if (!overlayEntry.mounted) {
       OverlayState overlayState = Overlay.of(context)!;
       overlayState.insert(overlayEntry);

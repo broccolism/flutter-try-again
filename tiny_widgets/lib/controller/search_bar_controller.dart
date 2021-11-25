@@ -9,7 +9,7 @@ class SearchBarController extends GetxController {
 
   late final TextEditingController _keywordController;
 
-  final RxList<SearchResult> _curResults = <SearchResult>[].obs;
+  final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
   SearchBarController({required this.searchRepo});
 
@@ -26,7 +26,7 @@ class SearchBarController extends GetxController {
   }
 
   TextEditingController get keywordController => _keywordController;
-  List<SearchResult> get curResults => _curResults;
+  List<GoogleSearch> get curResults => _curResults;
 
   void onChangeTextField({
     required String input,
@@ -37,12 +37,7 @@ class SearchBarController extends GetxController {
       _curResults.value = [];
       removeOverlay();
     } else {
-      _curResults.value = [
-        SearchResult.sample,
-        SearchResult.sample,
-        SearchResult.sample,
-      ];
-      searchRepo.searchOnGoogle();
+      searchOnGoogle("");
       showOverlay();
     }
   }
@@ -52,11 +47,13 @@ class SearchBarController extends GetxController {
     _curResults.value = [];
   }
 
-  void onTapAutocompleteItem(SearchResult item) {
-    _keywordController.text = item.name;
+  void onTapAutocompleteItem(GoogleSearch item) {
+    _keywordController.text = item.title;
     _curResults.value = [];
     MyUiUtils.moveTextEditingCursorToBack(_keywordController);
   }
 
-  Future<void> searchInGoogle(String keyword) async {}
+  Future<void> searchOnGoogle(String keyword) async {
+    _curResults.value = await searchRepo.searchOnGoogle();
+  }
 }

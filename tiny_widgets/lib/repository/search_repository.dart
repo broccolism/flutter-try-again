@@ -2,10 +2,11 @@ import 'dart:developer';
 
 import 'package:get/get_connect.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/provider/search_provider.dart';
 
 abstract class AbstractSearchRepository {
-  Future<void> searchOnGoogle();
+  Future<List<GoogleSearch>> searchOnGoogle();
 }
 
 class SearchRepository extends GetxService implements AbstractSearchRepository {
@@ -14,8 +15,13 @@ class SearchRepository extends GetxService implements AbstractSearchRepository {
   SearchRepository({required this.searchProvider});
 
   @override
-  Future<void> searchOnGoogle() async {
+  Future<List<GoogleSearch>> searchOnGoogle() async {
     Response res = await searchProvider.searchOnGoogle();
-    log(res.body.toString(), name: "@@@@@@@@ search on google");
+    Map<String, dynamic> responseBody = Map.from(res.body);
+    List<GoogleSearch> searchItems = List.from(responseBody['items'])
+        .map((item) => GoogleSearch.fromMap(item))
+        .toList();
+
+    return searchItems;
   }
 }

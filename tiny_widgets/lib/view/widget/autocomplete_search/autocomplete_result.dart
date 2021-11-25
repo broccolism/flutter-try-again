@@ -35,7 +35,7 @@ class AutoCompleteResult extends GetView<SearchBarController> {
             vertical: 12,
             horizontal: MyConstants.SCREEN_HORIZONTAL_MARGIN.left),
         child: Text(
-          controller.curResults[index].name,
+          controller.curResults[index].title,
           style: Theme.of(context).textTheme.headline6,
         ),
       ),

@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
-class AutoCompleteResult extends GetView<AutoCompleteController> {
-  const AutoCompleteResult({Key? key}) : super(key: key);
+class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
+  const AutoCompleteKeywordList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

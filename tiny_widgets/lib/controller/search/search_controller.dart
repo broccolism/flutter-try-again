@@ -21,7 +21,7 @@ class SearchController extends GetxController {
     super.onClose();
   }
 
-  void onClearTextField() {
+  void clearTextField() {
     _keywordController.clear();
     _curResults.value = [];
   }
@@ -32,8 +32,7 @@ class SearchController extends GetxController {
     MyUiUtils.moveTextEditingCursorToBack(_keywordController);
   }
 
-  // TODO: ENTER 쳤을 때 실행
-  Future<void> _searchOnGoogle(String keyword) async {
+  Future<void> searchOnGoogle(String keyword) async {
     _curResults.value = await searchRepo.searchOnGoogle(keyword);
   }
 }

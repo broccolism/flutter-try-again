@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/repository/repositories.dart';
@@ -23,16 +25,18 @@ class AutoCompleteController extends GetxController {
 
     debounce(
       _curInput,
-      handleKeyword,
+      handleInput,
       time: Duration(milliseconds: 500),
     );
   }
 
-  void handleKeyword(String input) {
+  void handleInput(String input) {
     if (input.isEmpty || input.length < MIN_KEYWORD_LENGTH) {
       _curKeywords.value = [];
+      _removeOverlay();
     } else if (input.length >= MIN_KEYWORD_LENGTH) {
       _getKeywordsOnGoogle(input);
+      _insertOverlay();
     }
   }
 
@@ -41,6 +45,10 @@ class AutoCompleteController extends GetxController {
       required void Function() removeOverlay}) {
     _insertOverlay = insertOverlay;
     _removeOverlay = removeOverlay;
+  }
+
+  void setInput(String input) {
+    _curInput.value = input;
   }
 
   Future<void> _getKeywordsOnGoogle(String keyword) async {

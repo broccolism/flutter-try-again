@@ -6,23 +6,24 @@ import 'package:tiny_widgets/src/constants.dart';
 
 import '../widgets.dart';
 
-class AutoCompleteSearch extends StatefulWidget {
-  const AutoCompleteSearch({Key? key}) : super(key: key);
+class AutoCompleteSearchBar extends StatefulWidget {
+  const AutoCompleteSearchBar({Key? key}) : super(key: key);
 
   @override
-  _AutoCompleteSearchState createState() => _AutoCompleteSearchState();
+  _AutoCompleteSearchBarState createState() => _AutoCompleteSearchBarState();
 }
 
-class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
+class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
   late final OverlayEntry overlayEntry =
       OverlayEntry(builder: _overlayEntryBuilder);
   final GlobalKey _searchBarKey = GlobalKey();
   final LayerLink _searchBarLink = LayerLink();
+  final AutoCompleteController controller = Get.find<AutoCompleteController>();
 
   @override
   void initState() {
     super.initState();
-    AutoCompleteController.to.initOverlayHandlers(
+    controller.initOverlayHandlers(
         insertOverlay: insertOverlay, removeOverlay: removeOverlay);
   }
 
@@ -38,6 +39,7 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
       link: _searchBarLink,
       child: SearchBar(
         key: _searchBarKey,
+        onChanged: controller.setInput,
       ),
     );
   }
@@ -67,7 +69,7 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
         link: _searchBarLink,
         showWhenUnlinked: false,
         offset: Offset(0.0, size.height),
-        child: AutoCompleteResult(),
+        child: AutoCompleteKeywordList(),
       ),
     );
   }

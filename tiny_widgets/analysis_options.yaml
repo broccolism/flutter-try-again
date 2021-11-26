@@ -13,5 +13,6 @@ linter:
   rules:
     prefer_const_constructors: false
     avoid_print: false
+    constant_identifier_names: false
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

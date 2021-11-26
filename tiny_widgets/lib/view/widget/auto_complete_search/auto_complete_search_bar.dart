@@ -39,7 +39,6 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
       link: _searchBarLink,
       child: SearchBar(
         key: _searchBarKey,
-        onChanged: controller.setInput,
       ),
     );
   }

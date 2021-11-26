@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:tiny_widgets/controller/search/search_controller.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/repository/repositories.dart';
 
@@ -23,10 +24,12 @@ class AutoCompleteController extends GetxController {
   void onInit() {
     super.onInit();
 
+    SearchController.to.addChangeListener(setInput);
+
     debounce(
       _curInput,
       handleInput,
-      time: Duration(milliseconds: 500),
+      time: Duration(milliseconds: 300),
     );
   }
 

@@ -24,13 +24,12 @@ class AutoCompleteController extends GetxController {
   void onInit() {
     super.onInit();
 
-    SearchController.to.addChangeListener(setInput);
-
     debounce(
       _curInput,
       handleInput,
       time: Duration(milliseconds: 300),
     );
+    SearchController.to.addChangeListener(setInput);
   }
 
   void handleInput(String input) {
@@ -52,6 +51,9 @@ class AutoCompleteController extends GetxController {
 
   void setInput(String input) {
     _curInput.value = input;
+    if (input.isEmpty) {
+      _removeOverlay();
+    }
   }
 
   Future<void> _getKeywordsOnGoogle(String keyword) async {

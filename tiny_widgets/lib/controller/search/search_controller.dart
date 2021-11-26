@@ -26,7 +26,7 @@ class SearchController extends GetxController {
     _curResults.value = [];
   }
 
-  void onTapAutocompleteItem(GoogleSearch item) {
+  void onTapAutoCompleteItem(GoogleSearch item) {
     _keywordController.text = item.title;
     _curResults.value = [];
     MyUiUtils.moveTextEditingCursorToBack(_keywordController);

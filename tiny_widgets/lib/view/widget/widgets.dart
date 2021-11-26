@@ -1,3 +1,3 @@
-export 'autocomplete_search/search_bar.dart';
-export 'autocomplete_search/autocomplete_result.dart';
-export 'autocomplete_search/autocomplete_search.dart';
+export 'auto_complete_search/search_bar.dart';
+export 'auto_complete_search/auto_complete_result.dart';
+export 'auto_complete_search/auto_complete_search.dart';

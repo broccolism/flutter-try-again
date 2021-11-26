@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
-class AutoCompleteResult extends GetView<AutocompleteController> {
+class AutoCompleteResult extends GetView<AutoCompleteController> {
   const AutoCompleteResult({Key? key}) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class AutoCompleteResult extends GetView<AutocompleteController> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       // onTap: () =>
-      //     controller.onTapAutocompleteItem(controller.curResults[index]),
+      //     controller.onTapAutoCompleteItem(controller.curResults[index]),
       child: Container(
         padding: EdgeInsets.symmetric(
             vertical: 12,

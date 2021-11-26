@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/repository/repositories.dart';
 
-class AutocompleteController extends GetxController {
+class AutoCompleteController extends GetxController {
   final SearchRepository searchRepo;
-  AutocompleteController({required this.searchRepo});
+  AutoCompleteController({required this.searchRepo});
 
   late final void Function() _insertOverlay;
   late final void Function() _removeOverlay;
@@ -15,7 +15,7 @@ class AutocompleteController extends GetxController {
 
   List<GoogleSearch> get curKeywords => _curKeywords;
 
-  static AutocompleteController get to => Get.find();
+  static AutoCompleteController get to => Get.find();
 
   @override
   void onInit() {

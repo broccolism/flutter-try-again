@@ -22,7 +22,7 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   @override
   void initState() {
     super.initState();
-    AutocompleteController.to.initOverlayHandlers(
+    AutoCompleteController.to.initOverlayHandlers(
         insertOverlay: insertOverlay, removeOverlay: removeOverlay);
   }
 

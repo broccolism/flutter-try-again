@@ -5,7 +5,8 @@ import 'package:tiny_widgets/repository/search_repository.dart';
 class SearchBarBinding extends Bindings {
   @override
   void dependencies() {
-    SearchRepository searchRepository = Get.find<SearchRepository>();
-    Get.lazyPut(() => SearchBarController(searchRepo: searchRepository));
+    SearchRepository searchRepo = Get.find<SearchRepository>();
+    Get.lazyPut(() => SearchController(searchRepo: searchRepo));
+    Get.lazyPut(() => AutoCompleteController(searchRepo: searchRepo));
   }
 }

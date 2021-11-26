@@ -12,7 +12,6 @@ class SearchController extends GetxController {
   final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
   TextEditingController get keywordController => _inputController;
-  bool get hasResult => _curResults.isNotEmpty;
   static SearchController get to => Get.find();
 
   @override

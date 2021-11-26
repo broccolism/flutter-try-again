@@ -37,8 +37,16 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
       link: _searchBarLink,
-      child: SearchBar(
-        key: _searchBarKey,
+      child: Obx(
+        () => SearchBar(
+          key: _searchBarKey,
+          borderRadius: controller.hasKeyword
+              ? BorderRadius.only(
+                  topLeft: Radius.circular(MyConstants.BORDER_RADIUS),
+                  topRight: Radius.circular(MyConstants.BORDER_RADIUS),
+                )
+              : BorderRadius.circular(MyConstants.BORDER_RADIUS),
+        ),
       ),
     );
   }

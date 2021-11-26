@@ -17,6 +17,7 @@ class AutoCompleteController extends GetxController {
   static const int MIN_KEYWORD_LENGTH = 2;
 
   List<GoogleSearch> get curKeywords => _curKeywords;
+  bool get hasKeyword => _curKeywords.isNotEmpty;
 
   static AutoCompleteController get to => Get.find();
 

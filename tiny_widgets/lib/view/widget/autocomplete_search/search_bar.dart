@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
-class SearchBar extends GetView<SearchBarController> {
+class SearchBar extends GetView<SearchController> {
   const SearchBar({
     Key? key,
   }) : super(key: key);
@@ -28,7 +28,7 @@ class SearchBar extends GetView<SearchBarController> {
           controller: controller.keywordController,
           cursorColor: Colors.yellow[800],
           style: Theme.of(Get.context!).textTheme.headline5,
-          onChanged: controller.handleKeyword,
+          // onChanged: controller.handleKeyword,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: 12,

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
-class AutoCompleteResult extends GetView<SearchBarController> {
+class AutoCompleteResult extends GetView<AutocompleteController> {
   const AutoCompleteResult({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class AutoCompleteResult extends GetView<SearchBarController> {
         () => ListView.separated(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
-          itemCount: controller.curResults.length,
+          itemCount: controller.curKeywords.length,
           itemBuilder: _itemBuilder,
           separatorBuilder: _separatorBuilder,
         ),
@@ -31,14 +31,14 @@ class AutoCompleteResult extends GetView<SearchBarController> {
   Widget _itemBuilder(BuildContext context, int index) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () =>
-          controller.onTapAutocompleteItem(controller.curResults[index]),
+      // onTap: () =>
+      //     controller.onTapAutocompleteItem(controller.curResults[index]),
       child: Container(
         padding: EdgeInsets.symmetric(
             vertical: 12,
             horizontal: MyConstants.SCREEN_HORIZONTAL_MARGIN.left),
         child: Text(
-          controller.curResults[index].title,
+          controller.curKeywords[index].title,
           style: Theme.of(context).textTheme.headline6,
         ),
       ),

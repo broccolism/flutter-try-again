@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:tiny_widgets/controller/search_bar_controller.dart';
+import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/src/constants.dart';
 
 import '../widgets.dart';
@@ -22,7 +22,7 @@ class _AutoCompleteSearchState extends State<AutoCompleteSearch> {
   @override
   void initState() {
     super.initState();
-    SearchBarController.to.initOverlayHandlers(
+    AutocompleteController.to.initOverlayHandlers(
         insertOverlay: insertOverlay, removeOverlay: removeOverlay);
   }
 

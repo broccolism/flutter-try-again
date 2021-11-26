@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
@@ -12,6 +14,7 @@ class SearchController extends GetxController {
   final RxList<GoogleSearch> _curResults = <GoogleSearch>[].obs;
 
   TextEditingController get keywordController => _inputController;
+  List<GoogleSearch> get curResults => _curResults;
   static SearchController get to => Get.find();
 
   @override

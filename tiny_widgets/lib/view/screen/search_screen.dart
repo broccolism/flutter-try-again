@@ -17,43 +17,35 @@ class SearchScreen extends GetView<SearchController> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: _colorFieldsAndSearchBar(),
-    );
-  }
-
-  Widget _colorFieldsAndSearchBar() {
-    return Container(
-      color: Colors.lightBlue[400],
-      child: Column(
-        children: [
-          ..._colorFields(),
-          Container(
-            margin: MyConstants.SCREEN_HORIZONTAL_MARGIN,
-            child: AutoCompleteSearchBar(),
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      body: SingleChildScrollView(
+        child: Container(
+          constraints: BoxConstraints(minHeight: Get.height * 2),
+          child: Column(
+            children: [
+              SizedBox(height: 640),
+              _searchBar(),
+              SizedBox(height: MyConstants.SCREEN_HORIZONTAL_MARGIN.left),
+              _searchResults(),
+              SizedBox(height: 200),
+            ],
           ),
-          ..._colorFields(reversed: true),
-          _searchResults(),
-        ],
+        ),
       ),
     );
   }
 
-  List<Widget> _colorFields({bool reversed = false}) {
-    return List<int>.generate(TOTAL_COLOR_COUNT, (i) => i + 1).map((int i) {
-      int digit = reversed ? TOTAL_COLOR_COUNT - (i - 1) : i;
-      return Container(
-        width: double.infinity,
-        height: digit * 60,
-        color: Colors.lightBlue[digit * COLOR_INDEX_STEP],
-      );
-    }).toList();
+  Widget _searchBar() {
+    return Container(
+      margin: MyConstants.SCREEN_HORIZONTAL_MARGIN,
+      child: AutoCompleteSearchBar(),
+    );
   }
 
   Widget _searchResults() {
     return Container(
       padding: MyConstants.SCREEN_HORIZONTAL_MARGIN,
-      color: Colors.white,
       child: Obx(
         () => Column(
           children: controller.curResults
@@ -73,13 +65,16 @@ class SearchScreen extends GetView<SearchController> {
         children: [
           Text(
             result.title,
-            style: Theme.of(Get.context!).textTheme.headline5,
+            style: Theme.of(Get.context!).textTheme.headline6!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                ),
           ),
           SizedBox(height: 4),
           Text(
             result.displayLink ?? "no link",
-            style: Theme.of(Get.context!).textTheme.headline6!.copyWith(
-                  color: Colors.lightBlue[900],
+            style: Theme.of(Get.context!).textTheme.button!.copyWith(
+                  color: Colors.blue[100],
                   fontWeight: FontWeight.w300,
                 ),
           ),

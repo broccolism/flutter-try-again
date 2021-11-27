@@ -31,8 +31,8 @@ class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
   Widget _itemBuilder(BuildContext context, int index) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      // onTap: () =>
-      //     controller.onTapAutoCompleteItem(controller.curResults[index]),
+      onTap: () =>
+          controller.onTapAutoCompleteItem(controller.curKeywords[index]),
       child: Container(
         padding: EdgeInsets.symmetric(
             vertical: 12,

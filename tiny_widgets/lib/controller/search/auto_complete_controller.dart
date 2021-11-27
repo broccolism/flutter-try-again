@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/search/search_controller.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/repository/repositories.dart';
+import 'package:tiny_widgets/util/utils.dart';
 
 class AutoCompleteController extends GetxController {
   final SearchRepository searchRepo;
@@ -55,6 +56,14 @@ class AutoCompleteController extends GetxController {
     if (input.isEmpty) {
       _removeOverlay();
     }
+  }
+
+  void onTapAutoCompleteItem(GoogleSearch item) {
+    SearchController.to.keywordController.text = item.title;
+    MyUiUtils.moveTextEditingCursorToBack(
+        SearchController.to.keywordController);
+    _curKeywords.value = [];
+    _removeOverlay();
   }
 
   Future<void> _getKeywordsOnGoogle(String keyword) async {

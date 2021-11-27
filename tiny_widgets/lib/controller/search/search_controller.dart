@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/repository/search_repository.dart';
-import 'package:tiny_widgets/util/ui.dart';
 
 class SearchController extends GetxController {
   final SearchRepository searchRepo;
@@ -30,12 +29,6 @@ class SearchController extends GetxController {
   void clearTextField() {
     _inputController.clear();
     _curResults.value = [];
-  }
-
-  void onTapAutoCompleteItem(GoogleSearch item) {
-    _inputController.text = item.title;
-    _curResults.value = [];
-    MyUiUtils.moveTextEditingCursorToBack(_inputController);
   }
 
   Future<void> searchOnGoogle(String keyword) async {

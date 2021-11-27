@@ -12,9 +12,14 @@ class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[50],
       constraints: BoxConstraints(
         maxHeight: 340,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.grey[50],
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(MyConstants.BORDER_RADIUS),
+        ),
       ),
       child: Obx(
         () => ListView.separated(

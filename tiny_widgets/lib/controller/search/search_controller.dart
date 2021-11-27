@@ -24,7 +24,6 @@ class SearchController extends GetxController {
 
   void clearTextField() {
     _inputController.clear();
-    _curResults.value = [];
   }
 
   Future<void> searchOnGoogle(String keyword) async {

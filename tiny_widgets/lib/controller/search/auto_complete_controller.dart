@@ -54,6 +54,11 @@ class AutoCompleteController extends GetxController {
     SearchController.to.keywordController.text = item.title;
     MyUiUtils.moveTextEditingCursorToBack(
         SearchController.to.keywordController);
+    clearCurKeywords();
+  }
+
+  /// 추천 키워드 목록을 지우고 오버레이도 remove합니다.
+  void clearCurKeywords() {
     _curKeywords.value = [];
     _removeOverlay();
   }

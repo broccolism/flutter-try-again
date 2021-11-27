@@ -42,6 +42,7 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
           key: _searchBarKey,
           onChangedInput: controller.handleInput,
           onClearedInput: () => controller.handleInput(""),
+          onSubmittedInput: (_) => controller.clearCurKeywords(),
           borderRadius: controller.hasKeyword
               ? BorderRadius.only(
                   topLeft: Radius.circular(MyConstants.BORDER_RADIUS),

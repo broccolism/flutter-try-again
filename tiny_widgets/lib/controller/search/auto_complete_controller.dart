@@ -31,7 +31,6 @@ class AutoCompleteController extends GetxController {
       handleInput,
       time: Duration(milliseconds: 300),
     );
-    SearchController.to.addChangeListener(setInput);
   }
 
   void handleInput(String input) {
@@ -49,13 +48,6 @@ class AutoCompleteController extends GetxController {
       required void Function() removeOverlay}) {
     _insertOverlay = insertOverlay;
     _removeOverlay = removeOverlay;
-  }
-
-  void setInput(String input) {
-    _curInput.value = input;
-    if (input.isEmpty) {
-      _removeOverlay();
-    }
   }
 
   void onTapAutoCompleteItem(GoogleSearch item) {

@@ -6,9 +6,15 @@ import 'package:tiny_widgets/controller/controllers.dart';
 
 class SearchBar extends GetView<SearchController> {
   final BorderRadiusGeometry? borderRadius;
+  final void Function(String)? onChangedInput;
+  final void Function()? onClearedInput;
+  final void Function(String)? onSubmittedInput;
   const SearchBar({
     Key? key,
     this.borderRadius,
+    this.onChangedInput,
+    this.onClearedInput,
+    this.onSubmittedInput,
   }) : super(key: key);
 
   @override
@@ -23,7 +29,8 @@ class SearchBar extends GetView<SearchController> {
         controller: controller.keywordController,
         cursorColor: Colors.yellow[800],
         style: Theme.of(Get.context!).textTheme.headline5,
-        onSubmitted: controller.searchOnGoogle,
+        onChanged: _onChangedInput,
+        onSubmitted: _onSubmittedInput,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12,
@@ -37,11 +44,31 @@ class SearchBar extends GetView<SearchController> {
           suffixIcon: IconButton(
             color: Colors.blueGrey[300],
             icon: Icon(CupertinoIcons.clear),
-            onPressed: controller.clearTextField,
+            onPressed: _onClearedInput,
           ),
         ),
       ),
     );
+  }
+
+  void _onChangedInput(String input) {
+    if (onChangedInput != null) {
+      onChangedInput!(input);
+    }
+  }
+
+  void _onClearedInput() {
+    controller.clearTextField();
+    if (onClearedInput != null) {
+      onClearedInput!();
+    }
+  }
+
+  void _onSubmittedInput(String input) {
+    controller.searchOnGoogle(input);
+    if (onSubmittedInput != null) {
+      onSubmittedInput!(input);
+    }
   }
 
   InputBorder _noBorder() {

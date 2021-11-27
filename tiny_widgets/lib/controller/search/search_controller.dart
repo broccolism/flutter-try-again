@@ -22,10 +22,6 @@ class SearchController extends GetxController {
     super.onClose();
   }
 
-  void addChangeListener(void Function(String) listener) {
-    _inputController.addListener(() => listener(_inputController.text));
-  }
-
   void clearTextField() {
     _inputController.clear();
     _curResults.value = [];

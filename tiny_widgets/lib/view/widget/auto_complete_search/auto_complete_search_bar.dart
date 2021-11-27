@@ -40,6 +40,8 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
       child: Obx(
         () => SearchBar(
           key: _searchBarKey,
+          onChangedInput: controller.handleInput,
+          onClearedInput: () => controller.handleInput(""),
           borderRadius: controller.hasKeyword
               ? BorderRadius.only(
                   topLeft: Radius.circular(MyConstants.BORDER_RADIUS),

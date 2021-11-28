@@ -16,6 +16,10 @@ class SearchRepository extends GetxService implements AbstractSearchRepository {
 
   @override
   Future<List<GoogleSearch>> searchOnGoogle(String keyword) async {
+    if (keyword.isEmpty) {
+      return [];
+    }
+
     Response res = await searchProvider.searchOnGoogle(keyword);
     Map<String, dynamic> responseBody = Map.from(res.body);
     List<GoogleSearch> searchItems = List.from(responseBody['items'])

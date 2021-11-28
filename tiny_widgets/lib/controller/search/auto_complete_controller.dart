@@ -45,7 +45,7 @@ class AutoCompleteController extends GetxController {
     }
   }
 
-  void initOverlayAndHandlers(
+  void initOverlayHandlers(
       {required void Function() insertOverlay,
       required void Function() removeOverlay}) {
     _insertOverlay = () {

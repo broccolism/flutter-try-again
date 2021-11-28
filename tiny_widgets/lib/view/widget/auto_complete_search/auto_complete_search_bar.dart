@@ -23,7 +23,7 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
   @override
   void initState() {
     super.initState();
-    controller.initOverlayAndHandlers(
+    controller.initOverlayHandlers(
         insertOverlay: insertOverlay, removeOverlay: removeOverlay);
   }
 

@@ -23,7 +23,7 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
   @override
   void initState() {
     super.initState();
-    controller.initOverlayHandlers(
+    controller.initOverlayAndHandlers(
         insertOverlay: insertOverlay, removeOverlay: removeOverlay);
   }
 
@@ -43,7 +43,7 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
           onChangedInput: controller.handleInput,
           onClearedInput: () => controller.handleInput(""),
           onSubmittedInput: (_) => controller.clearCurKeywords(),
-          borderRadius: controller.hasKeyword
+          borderRadius: controller.isOverlayMounted
               ? BorderRadius.only(
                   topLeft: Radius.circular(MyConstants.BORDER_RADIUS),
                   topRight: Radius.circular(MyConstants.BORDER_RADIUS),

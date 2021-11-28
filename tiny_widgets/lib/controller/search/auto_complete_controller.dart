@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/search/search_controller.dart';
 import 'package:tiny_widgets/model/models.dart';
@@ -12,13 +13,14 @@ class AutoCompleteController extends GetxController {
 
   late final void Function() _insertOverlay;
   late final void Function() _removeOverlay;
-  late final RxString _curInput = "".obs;
+  final RxString _curInput = "".obs;
+  final RxBool _isOverlayMounted = false.obs;
   final RxList<GoogleSearch> _curKeywords = <GoogleSearch>[].obs;
 
   static const int MIN_KEYWORD_LENGTH = 2;
 
   List<GoogleSearch> get curKeywords => _curKeywords;
-  bool get hasKeyword => _curKeywords.isNotEmpty;
+  bool get isOverlayMounted => _isOverlayMounted.value;
 
   static AutoCompleteController get to => Get.find();
 
@@ -43,11 +45,17 @@ class AutoCompleteController extends GetxController {
     }
   }
 
-  void initOverlayHandlers(
+  void initOverlayAndHandlers(
       {required void Function() insertOverlay,
       required void Function() removeOverlay}) {
-    _insertOverlay = insertOverlay;
-    _removeOverlay = removeOverlay;
+    _insertOverlay = () {
+      insertOverlay();
+      _isOverlayMounted.value = true;
+    };
+    _removeOverlay = () {
+      removeOverlay();
+      _isOverlayMounted.value = false;
+    };
   }
 
   void onTapAutoCompleteItem(GoogleSearch item) {

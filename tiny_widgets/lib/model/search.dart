@@ -1,19 +1,23 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
 class GoogleSearch {
   final String title;
-  final String? link; // full url
-  final String? displayLink; // abridged url
+  final String link; // full url
+  final String displayLink; // abridged url
+  final String snippet;
+  final String? imageUrl;
   final String? mimeType;
 
-  GoogleSearch(
-      {required this.title,
-      required this.link,
-      required this.displayLink,
-      required this.mimeType});
+  GoogleSearch({
+    required this.title,
+    required this.link,
+    required this.displayLink,
+    required this.mimeType,
+    required this.snippet,
+    required this.imageUrl,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -21,6 +25,8 @@ class GoogleSearch {
       'link': link,
       'displayLink': displayLink,
       'mimeType': mimeType,
+      'snippet': snippet,
+      'imageUrl': imageUrl,
     };
   }
 
@@ -30,6 +36,8 @@ class GoogleSearch {
       link: map['link'],
       displayLink: map['displayLink'],
       mimeType: map['mimeType'],
+      snippet: map['snippet'],
+      imageUrl: (map['pagemap']['cse_image']?[0])?['src'],
     );
   }
 
@@ -40,6 +48,6 @@ class GoogleSearch {
 
   @override
   String toString() {
-    return 'GoogleSearch(title: $title, link: $link, displayLink: $displayLink, mimeType: $mimeType)';
+    return 'GoogleSearch(\ntitle: $title\nlink: $link\ndisplayLink: $displayLink\nmimeType: $mimeType\nsnippet: $snippet\nimageUrl: $imageUrl\n)';
   }
 }

@@ -79,7 +79,7 @@ class SearchScreen extends GetView<SearchController> {
             ),
             SizedBox(height: 4),
             Text(
-              result.displayLink ?? "no link",
+              result.displayLink,
               style: Theme.of(Get.context!).textTheme.button!.copyWith(
                     color: Colors.blue[100],
                     fontWeight: FontWeight.w300,

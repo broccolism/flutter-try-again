@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/view/screen/screens.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class SearchScreen extends GetView<SearchController> {
@@ -57,28 +58,35 @@ class SearchScreen extends GetView<SearchController> {
   }
 
   Widget _resultItemBuilder(GoogleSearch result) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            result.title,
-            style: Theme.of(Get.context!).textTheme.headline6!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                ),
-          ),
-          SizedBox(height: 4),
-          Text(
-            result.displayLink ?? "no link",
-            style: Theme.of(Get.context!).textTheme.button!.copyWith(
-                  color: Colors.blue[100],
-                  fontWeight: FontWeight.w300,
-                ),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () => Get.toNamed(
+        SearchResultScreen.name,
+        arguments: SearchResultScreenArgs(result: result),
+      ),
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              result.title,
+              style: Theme.of(Get.context!).textTheme.headline6!.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w300,
+                  ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              result.displayLink ?? "no link",
+              style: Theme.of(Get.context!).textTheme.button!.copyWith(
+                    color: Colors.blue[100],
+                    fontWeight: FontWeight.w300,
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

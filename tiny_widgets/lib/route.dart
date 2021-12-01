@@ -17,5 +17,10 @@ class MyPages {
       page: () => const SearchScreen(),
       binding: SearchBarBinding(),
     ),
+    GetPage(
+      name: SearchResultScreen.name,
+      page: () => const SearchResultScreen(),
+      binding: SearchResultBinding(),
+    ),
   ];
 }

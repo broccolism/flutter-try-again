@@ -13,7 +13,6 @@ class SearchResultController extends GetxController {
   void onInit() {
     super.onInit();
     SearchResultScreenArgs args = Get.arguments;
-    log(args.result.toString(), name: "args");
     _result.value = args.result;
   }
 

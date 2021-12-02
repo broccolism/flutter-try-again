@@ -37,7 +37,7 @@ class GoogleSearch {
       displayLink: map['displayLink'],
       mimeType: map['mimeType'],
       snippet: map['snippet'],
-      imageUrl: (map['pagemap']['cse_image']?[0])?['src'],
+      imageUrl: (map['pagemap']?['cse_image']?[0])?['src'],
     );
   }
 

@@ -5,7 +5,7 @@ import 'package:tiny_widgets/src/enum/enums.dart';
 
 class OmokController extends GetxController {
   late final RxList<List<OmokStone>> board;
-  late final Rx<OmokColor> curTurn;
+  final Rx<OmokColor> curTurn = OmokColor.BLACK.obs;
 
   @override
   void onInit() {
@@ -16,8 +16,8 @@ class OmokController extends GetxController {
 
   void _initBoard() {
     List<OmokStone> row =
-        List.generate(OmokConstants.BOARD_SIZE, (_) => OmokStone.EMPTY);
-    board.value = List.generate(OmokConstants.BOARD_SIZE, (_) => row);
+        List.generate(OmokConstants.CELL_COUNT_IN_ROW, (_) => OmokStone.EMPTY);
+    board = List.generate(OmokConstants.CELL_COUNT_IN_ROW, (_) => row).obs;
   }
 
   void _initTurn() {

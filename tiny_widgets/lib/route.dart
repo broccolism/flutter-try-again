@@ -22,5 +22,10 @@ class MyPages {
       page: () => const SearchResultScreen(),
       binding: SearchResultBinding(),
     ),
+    GetPage(
+      name: OmokScreen.name,
+      page: () => const OmokScreen(),
+      binding: OmokBinding(),
+    ),
   ];
 }

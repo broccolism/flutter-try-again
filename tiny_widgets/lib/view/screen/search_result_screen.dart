@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/model/models.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class SearchResultScreen extends GetView<SearchResultController> {
@@ -22,7 +22,7 @@ class SearchResultScreen extends GetView<SearchResultController> {
             _image(),
             SizedBox(height: 24),
             Padding(
-              padding: MyConstants.SCREEN_HORIZONTAL_MARGIN,
+              padding: CommonConstants.SCREEN_HORIZONTAL_MARGIN,
               child: Column(
                 children: [
                   _title(),
@@ -91,7 +91,7 @@ class SearchResultScreen extends GetView<SearchResultController> {
   }
 
   Widget _dummyText() {
-    return Text(MyConstants.DUMMY_TEXT,
+    return Text(CommonConstants.DUMMY_TEXT,
         style: Theme.of(Get.context!).textTheme.bodyText2);
   }
 }

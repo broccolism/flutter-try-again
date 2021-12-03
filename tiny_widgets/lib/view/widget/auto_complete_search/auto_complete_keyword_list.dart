@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 
 class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
   const AutoCompleteKeywordList({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
       decoration: BoxDecoration(
         color: Colors.grey[50],
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(MyConstants.BORDER_RADIUS),
+          bottom: Radius.circular(CommonConstants.BORDER_RADIUS),
         ),
       ),
       child: Obx(
@@ -41,7 +41,7 @@ class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
       child: Container(
         padding: EdgeInsets.symmetric(
             vertical: 12,
-            horizontal: MyConstants.SCREEN_HORIZONTAL_MARGIN.left),
+            horizontal: CommonConstants.SCREEN_HORIZONTAL_MARGIN.left),
         child: Text(
           controller.curKeywords[index].title,
           style: Theme.of(context).textTheme.headline6,
@@ -54,8 +54,8 @@ class AutoCompleteKeywordList extends GetView<AutoCompleteController> {
     return Divider(
       thickness: 1,
       height: 1,
-      indent: MyConstants.SCREEN_HORIZONTAL_MARGIN.left,
-      endIndent: MyConstants.SCREEN_HORIZONTAL_MARGIN.left,
+      indent: CommonConstants.SCREEN_HORIZONTAL_MARGIN.left,
+      endIndent: CommonConstants.SCREEN_HORIZONTAL_MARGIN.left,
       color: Colors.grey[300],
     );
   }

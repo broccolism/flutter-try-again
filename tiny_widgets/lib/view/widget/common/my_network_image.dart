@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 
 class MyNetworkImage extends StatelessWidget {
   final String? url;
@@ -36,6 +36,6 @@ class MyNetworkImage extends StatelessWidget {
   }
 
   Widget _defaultImge() {
-    return Image.asset(MyConstants.DEFAULT_IMAGE_PATH);
+    return Image.asset(CommonConstants.DEFAULT_IMAGE_PATH);
   }
 }

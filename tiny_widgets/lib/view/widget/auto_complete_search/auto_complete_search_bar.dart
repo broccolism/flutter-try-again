@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 
 import '../widgets.dart';
 
@@ -45,10 +45,10 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
           onSubmittedInput: (_) => controller.clearCurKeywords(),
           borderRadius: controller.isOverlayMounted
               ? BorderRadius.only(
-                  topLeft: Radius.circular(MyConstants.BORDER_RADIUS),
-                  topRight: Radius.circular(MyConstants.BORDER_RADIUS),
+                  topLeft: Radius.circular(CommonConstants.BORDER_RADIUS),
+                  topRight: Radius.circular(CommonConstants.BORDER_RADIUS),
                 )
-              : BorderRadius.circular(MyConstants.BORDER_RADIUS),
+              : BorderRadius.circular(CommonConstants.BORDER_RADIUS),
         ),
       ),
     );
@@ -74,7 +74,8 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
     return Positioned(
       left: position.dx,
       top: position.dy,
-      width: Get.size.width - MyConstants.SCREEN_HORIZONTAL_MARGIN.horizontal,
+      width:
+          Get.size.width - CommonConstants.SCREEN_HORIZONTAL_MARGIN.horizontal,
       child: CompositedTransformFollower(
         link: _searchBarLink,
         showWhenUnlinked: false,

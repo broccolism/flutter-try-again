@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class MyConstants {
-  MyConstants._();
+class CommonConstants {
+  CommonConstants._();
 
   static const String APP_NAME = "Tiny Widgets";
 

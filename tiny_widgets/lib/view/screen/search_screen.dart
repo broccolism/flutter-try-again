@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/model/models.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 import 'package:tiny_widgets/view/screen/screens.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
@@ -27,7 +27,7 @@ class SearchScreen extends GetView<SearchController> {
             children: [
               SizedBox(height: 640),
               _searchBar(),
-              SizedBox(height: MyConstants.SCREEN_HORIZONTAL_MARGIN.left),
+              SizedBox(height: CommonConstants.SCREEN_HORIZONTAL_MARGIN.left),
               _searchResults(),
               SizedBox(height: 200),
             ],
@@ -39,14 +39,14 @@ class SearchScreen extends GetView<SearchController> {
 
   Widget _searchBar() {
     return Container(
-      margin: MyConstants.SCREEN_HORIZONTAL_MARGIN,
+      margin: CommonConstants.SCREEN_HORIZONTAL_MARGIN,
       child: AutoCompleteSearchBar(),
     );
   }
 
   Widget _searchResults() {
     return Container(
-      padding: MyConstants.SCREEN_HORIZONTAL_MARGIN,
+      padding: CommonConstants.SCREEN_HORIZONTAL_MARGIN,
       child: Obx(
         () => Column(
           children: controller.curResults

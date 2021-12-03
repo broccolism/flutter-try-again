@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/binding/bindings.dart';
 import 'package:tiny_widgets/route.dart';
-import 'package:tiny_widgets/src/constants.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 import 'package:tiny_widgets/view/screen/home_screen.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: MyConstants.APP_NAME,
+      title: CommonConstants.APP_NAME,
       home: const HomeScreen(),
       getPages: MyPages.pages,
       initialBinding: InitialBinding(),

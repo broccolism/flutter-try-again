@@ -17,7 +17,20 @@ class SearchController extends GetxController {
   static SearchController get to => Get.find();
 
   @override
+  void onInit() {
+    super.onInit();
+    log("onInit called", name: "search controller");
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    log("onReady called", name: "search controller");
+  }
+
+  @override
   void onClose() {
+    log("onClose called", name: "search controller");
     _inputController.dispose();
     super.onClose();
   }

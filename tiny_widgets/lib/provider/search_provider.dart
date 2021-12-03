@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tiny_widgets/config/config.dart';
+import 'package:tiny_widgets/config/configs.dart';
 
 class SearchProvider extends GetConnect {
   Future<Response> searchOnGoogle(String keyword) => get(

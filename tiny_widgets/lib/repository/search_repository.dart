@@ -22,10 +22,9 @@ class SearchRepository extends GetxService implements AbstractSearchRepository {
 
     Response res = await searchProvider.searchOnGoogle(keyword);
     Map<String, dynamic> responseBody = Map.from(res.body);
-    List<GoogleSearch> searchItems =
-        List.from(responseBody['items']).map((item) {
-      return GoogleSearch.fromMap(item);
-    }).toList();
+    List<GoogleSearch> searchItems = List.from(responseBody['items'])
+        .map((item) => GoogleSearch.fromMap(item))
+        .toList();
 
     return searchItems;
   }

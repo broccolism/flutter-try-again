@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'dart:developer';
-
 class GoogleSearch {
   final String title;
   final String link; // full url

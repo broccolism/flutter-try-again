@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum OmokColor { BLACK, WHITE }
 enum OmokStone { EMPTY, BLACK, WHITE }
 
-extension Converter on OmokColor {
+extension OmokColorExtension on OmokColor {
   String toStringShort() {
     switch (this) {
       case OmokColor.BLACK:
@@ -11,6 +11,26 @@ extension Converter on OmokColor {
 
       case OmokColor.WHITE:
         return "white";
+    }
+  }
+
+  OmokStone toStone() {
+    switch (this) {
+      case OmokColor.BLACK:
+        return OmokStone.BLACK;
+
+      case OmokColor.WHITE:
+        return OmokStone.WHITE;
+    }
+  }
+
+  OmokColor oppositeOmokColor() {
+    switch (this) {
+      case OmokColor.BLACK:
+        return OmokColor.WHITE;
+
+      case OmokColor.WHITE:
+        return OmokColor.BLACK;
     }
   }
 
@@ -32,5 +52,15 @@ extension Converter on OmokColor {
       case OmokColor.WHITE:
         return Colors.black;
     }
+  }
+}
+
+extension OmokStoneExtension on OmokStone {
+  bool isEmpty() {
+    return this == OmokStone.EMPTY;
+  }
+
+  bool isNotEmpty() {
+    return this != OmokStone.EMPTY;
   }
 }

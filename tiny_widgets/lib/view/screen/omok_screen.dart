@@ -56,7 +56,7 @@ class OmokScreen extends GetView<OmokController> {
         child: Container(
           margin: EdgeInsets.all(4),
           decoration: BoxDecoration(
-            color: Colors.amber[100],
+            color: Colors.amber[200],
             border: Border.all(
               width: 2.0,
               color: Colors.black,

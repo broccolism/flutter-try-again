@@ -39,7 +39,11 @@ class BlackStone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: 8,
+      height: 8,
+      color: Colors.black,
+    );
   }
 }
 
@@ -48,6 +52,10 @@ class WhiteStone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: 8,
+      height: 8,
+      color: Colors.white,
+    );
   }
 }

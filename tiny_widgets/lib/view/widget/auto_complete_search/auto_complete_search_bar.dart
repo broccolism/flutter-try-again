@@ -68,8 +68,8 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
   }
 
   Widget _overlayEntryBuilder(BuildContext context) {
-    Offset position = _getOverlayEntryPosition();
-    Size size = _getOverlayEntrySize();
+    Offset position = _getSearchBarPosition();
+    Size size = _getSearchBarSize();
 
     return Positioned(
       left: position.dx,
@@ -84,14 +84,14 @@ class _AutoCompleteSearchBarState extends State<AutoCompleteSearchBar> {
     );
   }
 
-  Offset _getOverlayEntryPosition() {
+  Offset _getSearchBarPosition() {
     RenderBox renderBox =
         _searchBarKey.currentContext!.findRenderObject()! as RenderBox;
     return Offset(renderBox.localToGlobal(Offset.zero).dx,
         renderBox.localToGlobal(Offset.zero).dy + renderBox.size.height);
   }
 
-  Size _getOverlayEntrySize() {
+  Size _getSearchBarSize() {
     RenderBox renderBox =
         _searchBarKey.currentContext!.findRenderObject()! as RenderBox;
     return renderBox.size;

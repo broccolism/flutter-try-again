@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/search/search_controller.dart';
 import 'package:tiny_widgets/model/models.dart';

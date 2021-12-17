@@ -49,8 +49,8 @@ class _ColoredStonePainter extends _BoardPainter {
     Paint painter = Paint()
       ..style = PaintingStyle.fill
       ..shader = RadialGradient(radius: 6, colors: [
-        omokColor.oppositeColor(),
         omokColor.color(),
+        omokColor.oppositeColor(),
       ]).createShader(Offset.zero & size);
 
     canvas.drawCircle(Offset(horizontalCenterPos, verticalCenterPos),

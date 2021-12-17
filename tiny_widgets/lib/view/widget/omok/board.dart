@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
+import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/src/constant/constants.dart';
 import 'package:tiny_widgets/src/enum/enums.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
@@ -22,10 +23,13 @@ class OmokBoard extends GetView<OmokController> {
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
+    OmokPosition pos = OmokPosition.fromIndex(index);
     return Obx(
       () => GestureDetector(
-          onTap: () => controller.putStone(index),
-          child: _omokStoneByColor(controller.board[index])),
+        onTap: () => controller.putStone(pos),
+        // TODO: board[pos.col][pos.row] 인터페이스 바꾸기
+        child: _omokStoneByColor(controller.board[pos.col][pos.row]),
+      ),
     );
   }
 

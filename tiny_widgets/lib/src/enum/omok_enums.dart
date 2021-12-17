@@ -63,4 +63,15 @@ extension OmokStoneExtension on OmokStone {
   bool isNotEmpty() {
     return this != OmokStone.EMPTY;
   }
+
+  OmokColor? toOmokColor() {
+    switch (this) {
+      case OmokStone.EMPTY:
+        return null;
+      case OmokStone.BLACK:
+        return OmokColor.BLACK;
+      case OmokStone.WHITE:
+        return OmokColor.WHITE;
+    }
+  }
 }

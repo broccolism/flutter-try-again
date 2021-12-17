@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-Paint linePainter = Paint()
-  ..color = Colors.black
-  ..strokeWidth = 1;
+import 'package:tiny_widgets/src/enum/omok_enums.dart';
 
 class EmptyStone extends StatelessWidget {
   const EmptyStone({Key? key}) : super(key: key);
@@ -11,26 +8,8 @@ class EmptyStone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _EmptyStonePainter(),
+      painter: _BoardPainter(),
     );
-  }
-}
-
-class _EmptyStonePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    double horizontalCenterPos = size.width / 2;
-    double verticalCenterPos = size.height / 2;
-
-    canvas.drawLine(Offset(horizontalCenterPos, 0),
-        Offset(horizontalCenterPos, size.height), linePainter);
-    canvas.drawLine(Offset(0, verticalCenterPos),
-        Offset(size.width, verticalCenterPos), linePainter);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }
 
@@ -39,10 +18,8 @@ class BlackStone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 8,
-      height: 8,
-      color: Colors.black,
+    return CustomPaint(
+      painter: _ColoredStonePainter(omokColor: OmokColor.BLACK),
     );
   }
 }
@@ -52,10 +29,57 @@ class WhiteStone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 8,
-      height: 8,
-      color: Colors.white,
+    return CustomPaint(
+      painter: _ColoredStonePainter(omokColor: OmokColor.WHITE),
     );
+  }
+}
+
+class _ColoredStonePainter extends _BoardPainter {
+  final OmokColor omokColor;
+
+  _ColoredStonePainter({required this.omokColor});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    super.paint(canvas, size);
+
+    double horizontalCenterPos = size.width / 2;
+    double verticalCenterPos = size.height / 2;
+    Paint painter = Paint()
+      ..style = PaintingStyle.fill
+      ..shader = RadialGradient(radius: 6, colors: [
+        omokColor.oppositeColor(),
+        omokColor.color(),
+      ]).createShader(Offset.zero & size);
+
+    canvas.drawCircle(Offset(horizontalCenterPos, verticalCenterPos),
+        size.width / 2, painter);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class _BoardPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    double horizontalCenterPos = size.width / 2;
+    double verticalCenterPos = size.height / 2;
+    Paint painter = Paint()
+      ..color = Colors.black
+      ..strokeWidth = 1;
+
+    canvas.drawLine(Offset(horizontalCenterPos, 0),
+        Offset(horizontalCenterPos, size.height), painter);
+    canvas.drawLine(Offset(0, verticalCenterPos),
+        Offset(size.width, verticalCenterPos), painter);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

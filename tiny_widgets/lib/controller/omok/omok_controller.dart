@@ -34,72 +34,38 @@ class OmokController extends GetxController {
   }
 
   void putStone(OmokPosition pos) {
+    log("put stone on $pos");
     if (_board[pos.col][pos.row].isNotEmpty()) {
       return;
     }
 
-    _board.value[pos.col][pos.row] = _curTurn.value.toStone();
+    _board[pos.col][pos.row] = _curTurn.value.toStone();
+
+    _checkFiveStones();
 
     _curTurn.value = _curTurn.value.oppositeOmokColor();
-    _checkFiveStones();
   }
 
   OmokColor? _checkFiveStones() {
     List<List<OmokStone>> copyOfBoard = List<List<OmokStone>>.from(
         _board.map((List<OmokStone> row) => List<OmokStone>.from(row)));
-    OmokPosition _posDown(OmokPosition pos) =>
-        OmokPosition(col: pos.col, row: pos.row + 1);
-    OmokPosition _posUp(OmokPosition pos) =>
-        OmokPosition(col: pos.col, row: pos.row - 1);
-    OmokPosition _posRight(OmokPosition pos) =>
-        OmokPosition(col: pos.col + 1, row: pos.row);
-    OmokPosition _posLeft(OmokPosition pos) =>
-        OmokPosition(col: pos.col - 1, row: pos.row);
-    bool _canGoDown(OmokPosition pos) =>
-        pos.row < OmokConstants.CELL_COUNT_IN_ROW - 1;
-    bool _canGoUp(OmokPosition pos) => pos.row > 1;
-    bool _canGoRight(OmokPosition pos) =>
-        pos.col < OmokConstants.CELL_COUNT_IN_ROW - 1;
-    bool _canGoLeft(OmokPosition pos) => pos.col > 1;
 
-    for (int i = 0; i < OmokConstants.CELL_COUNT_IN_ROW; ++i) {
-      for (int j = 0; j < OmokConstants.CELL_COUNT_IN_ROW; ++j) {
-        if (copyOfBoard[i][j].isNotEmpty() &&
-            (copyOfBoard[i][j] == _curTurn.value.toStone())) {
-          int count = 0;
-
-          Queue<OmokPosition> queue = Queue();
-          copyOfBoard[i][j] = OmokStone.EMPTY;
-          queue.add(OmokPosition(col: i, row: j));
-
-          while (queue.isNotEmpty) {
-            OmokPosition curPos = queue.removeFirst();
-            count += 1;
-
-            if (_canGoDown(curPos)) {
-              queue.add(_posDown(curPos));
-              count += 1;
-            }
-            if (_canGoUp(curPos)) {
-              queue.add(_posUp(curPos));
-              count += 1;
-            }
-            if (_canGoRight(curPos)) {
-              queue.add(_posRight(curPos));
-              count += 1;
-            }
-            if (_canGoLeft(curPos)) {
-              queue.add(_posLeft(curPos));
-              count += 1;
-            }
-
-            if (count >= 5) {
-              log("message");
-              return _board[curPos.col][curPos.row].toOmokColor();
-            }
-          }
-        }
-      }
+    // TODO: refactor!!!!!
+    bool _canGoDown(OmokPosition pos) {
+      log((pos.row < OmokConstants.CELL_COUNT_IN_ROW - 1).toString());
+      log("${copyOfBoard[pos.col][pos.row + 1]}, ${copyOfBoard[pos.col][pos.row]}");
+      return pos.row < OmokConstants.CELL_COUNT_IN_ROW - 1 &&
+          copyOfBoard[pos.col][pos.row + 1] == copyOfBoard[pos.col][pos.row];
     }
+
+    bool _canGoUp(OmokPosition pos) =>
+        pos.row > 1 &&
+        copyOfBoard[pos.col][pos.row - 1] == copyOfBoard[pos.col][pos.row];
+    bool _canGoRight(OmokPosition pos) =>
+        pos.col < OmokConstants.CELL_COUNT_IN_ROW - 1 &&
+        copyOfBoard[pos.col + 1][pos.row] == copyOfBoard[pos.col][pos.row];
+    bool _canGoLeft(OmokPosition pos) =>
+        pos.col > 1 &&
+        copyOfBoard[pos.col - 1][pos.row] == copyOfBoard[pos.col][pos.row];
   }
 }

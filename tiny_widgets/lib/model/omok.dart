@@ -9,4 +9,7 @@ class OmokPosition {
   factory OmokPosition.fromIndex(int index) => OmokPosition(
       col: index % OmokConstants.CELL_COUNT_IN_ROW,
       row: index ~/ OmokConstants.CELL_COUNT_IN_ROW);
+
+  @override
+  String toString() => "($col, $row)";
 }

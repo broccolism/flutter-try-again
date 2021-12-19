@@ -34,7 +34,6 @@ class OmokController extends GetxController {
   }
 
   void putStone(OmokPosition pos) {
-    log("put stone on $pos");
     if (_board[pos.col][pos.row].isNotEmpty()) {
       return;
     }
@@ -50,22 +49,12 @@ class OmokController extends GetxController {
     List<List<OmokStone>> copyOfBoard = List<List<OmokStone>>.from(
         _board.map((List<OmokStone> row) => List<OmokStone>.from(row)));
 
-    // TODO: refactor!!!!!
-    bool _canGoDown(OmokPosition pos) {
-      log((pos.row < OmokConstants.CELL_COUNT_IN_ROW - 1).toString());
-      log("${copyOfBoard[pos.col][pos.row + 1]}, ${copyOfBoard[pos.col][pos.row]}");
-      return pos.row < OmokConstants.CELL_COUNT_IN_ROW - 1 &&
-          copyOfBoard[pos.col][pos.row + 1] == copyOfBoard[pos.col][pos.row];
-    }
-
-    bool _canGoUp(OmokPosition pos) =>
-        pos.row > 1 &&
-        copyOfBoard[pos.col][pos.row - 1] == copyOfBoard[pos.col][pos.row];
-    bool _canGoRight(OmokPosition pos) =>
-        pos.col < OmokConstants.CELL_COUNT_IN_ROW - 1 &&
-        copyOfBoard[pos.col + 1][pos.row] == copyOfBoard[pos.col][pos.row];
-    bool _canGoLeft(OmokPosition pos) =>
-        pos.col > 1 &&
-        copyOfBoard[pos.col - 1][pos.row] == copyOfBoard[pos.col][pos.row];
+    // 현재 돌과 같은 색상인 칸 찾기
+    // 가장 끝 돌이 아니면 패스 = 북서, 북동, 북, 서쪽에 자신과 같은 색상 돌이 있으면 패스.
+    // 만약 가장 끝 돌을 찾았다면
+    //  오른쪽으로 가면서 empty 처리하기 -> 5면 win
+    //  아래쪽으로 가면서 empty 처리하기 -> 5면 win
+    //  남서방향 대각선으로 가면서 empty 처리하기 -> 5면 win
+    //  남동방향 대각선으로 가면서 empty 처리하기 -> 5면 win
   }
 }

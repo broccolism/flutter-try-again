@@ -28,7 +28,7 @@ class OmokBoard extends GetView<OmokController> {
       () => GestureDetector(
         onTap: () => controller.putStone(pos),
         // TODO: board[pos.col][pos.row] 인터페이스 바꾸기
-        child: _omokStoneByColor(controller.board[pos.col][pos.row]),
+        child: _omokStoneByColor(controller.board[pos.row][pos.col]),
       ),
     );
   }

@@ -1,5 +1,5 @@
-import 'dart:collection';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
@@ -34,27 +34,57 @@ class OmokController extends GetxController {
   }
 
   void putStone(OmokPosition pos) {
-    if (_board[pos.col][pos.row].isNotEmpty()) {
+    if (_board[pos.row][pos.col].isNotEmpty()) {
       return;
     }
 
-    _board[pos.col][pos.row] = _curTurn.value.toStone();
+    _board[pos.row][pos.col] = _curTurn.value.toStone();
 
     _checkFiveStones();
+    _printBoard();
 
     _curTurn.value = _curTurn.value.oppositeOmokColor();
   }
 
   OmokColor? _checkFiveStones() {
-    List<List<OmokStone>> copyOfBoard = List<List<OmokStone>>.from(
-        _board.map((List<OmokStone> row) => List<OmokStone>.from(row)));
+    for (int i = 0; i < OmokConstants.CELL_COUNT_IN_ROW; ++i) {
+      for (int j = 0; j < OmokConstants.CELL_COUNT_IN_ROW; ++j) {
+        if (_board[i][j] == OmokStone.EMPTY) continue;
 
-    // 현재 돌과 같은 색상인 칸 찾기
-    // 가장 끝 돌이 아니면 패스 = 북서, 북동, 북, 서쪽에 자신과 같은 색상 돌이 있으면 패스.
-    // 만약 가장 끝 돌을 찾았다면
-    //  오른쪽으로 가면서 empty 처리하기 -> 5면 win
-    //  아래쪽으로 가면서 empty 처리하기 -> 5면 win
-    //  남서방향 대각선으로 가면서 empty 처리하기 -> 5면 win
-    //  남동방향 대각선으로 가면서 empty 처리하기 -> 5면 win
+        bool isValid = true;
+        for (int move = 0; move < OmokConstants.LINE_LENGTH_TO_WIN; ++move) {
+          if (i + move >= OmokConstants.CELL_COUNT_IN_ROW ||
+              _board[i][j] != _board[i + move][j]) {
+            isValid = false;
+            break;
+          }
+        }
+
+        if (isValid) {
+          log("@@@@@@@@@ DONE", name: "@@@@@@@@@");
+        }
+      }
+    }
+  }
+
+  void _printBoard() {
+    String _toNumString(OmokStone stone) {
+      switch (stone) {
+        case OmokStone.EMPTY:
+          return " ";
+        case OmokStone.BLACK:
+          return "B";
+        case OmokStone.WHITE:
+          return "W";
+      }
+    }
+
+    for (int i = 0; i < OmokConstants.CELL_COUNT_IN_ROW; ++i) {
+      String line = "";
+      for (int j = 0; j < OmokConstants.CELL_COUNT_IN_ROW; ++j) {
+        line += _toNumString(_board[i][j]);
+      }
+      log(line, name: i.toString());
+    }
   }
 }

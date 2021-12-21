@@ -40,51 +40,45 @@ class OmokController extends GetxController {
 
     _board[pos.row][pos.col] = _curTurn.value.toStone();
 
-    _checkFiveStones();
-    _printBoard();
+    _checkWinner();
 
     _curTurn.value = _curTurn.value.oppositeOmokColor();
   }
 
-  OmokColor? _checkFiveStones() {
-    for (int i = 0; i < OmokConstants.CELL_COUNT_IN_ROW; ++i) {
-      for (int j = 0; j < OmokConstants.CELL_COUNT_IN_ROW; ++j) {
-        if (_board[i][j] == OmokStone.EMPTY) continue;
+  OmokColor? _checkWinner() {
+    for (int row = 0; row < OmokConstants.CELL_COUNT_IN_ROW; ++row) {
+      for (int col = 0; col < OmokConstants.CELL_COUNT_IN_ROW; ++col) {
+        if (_board[row][col] == OmokStone.EMPTY) continue;
 
-        bool isValid = true;
-        for (int move = 0; move < OmokConstants.LINE_LENGTH_TO_WIN; ++move) {
-          if (i + move >= OmokConstants.CELL_COUNT_IN_ROW ||
-              _board[i][j] != _board[i + move][j]) {
-            isValid = false;
-            break;
+        OmokPosition curPos = OmokPosition(row: row, col: col);
+
+        List<OmokPosition> checkList = [
+          curPos.goRight().goUp(),
+          curPos.goRight(),
+          curPos.goRight().goDown(),
+          curPos.goDown(),
+        ];
+
+        for (int i = 0; i < checkList.length; ++i) {
+          OmokPosition movedPos = checkList[i];
+          OmokPosition diff = curPos - movedPos;
+
+          bool hasFiveStones = true;
+          for (int move = 0; move < OmokConstants.LINE_LENGTH_TO_WIN; ++move) {
+            if (!movedPos.isValid() ||
+                _board[curPos.row][curPos.col] !=
+                    _board[movedPos.row][movedPos.col]) {
+              hasFiveStones = false;
+              break;
+            }
+            movedPos += diff;
+          }
+
+          if (hasFiveStones) {
+            log("@@@@@@@@@@@@@@@@@@@@@@@");
           }
         }
-
-        if (isValid) {
-          log("@@@@@@@@@ DONE", name: "@@@@@@@@@");
-        }
       }
-    }
-  }
-
-  void _printBoard() {
-    String _toNumString(OmokStone stone) {
-      switch (stone) {
-        case OmokStone.EMPTY:
-          return " ";
-        case OmokStone.BLACK:
-          return "B";
-        case OmokStone.WHITE:
-          return "W";
-      }
-    }
-
-    for (int i = 0; i < OmokConstants.CELL_COUNT_IN_ROW; ++i) {
-      String line = "";
-      for (int j = 0; j < OmokConstants.CELL_COUNT_IN_ROW; ++j) {
-        line += _toNumString(_board[i][j]);
-      }
-      log(line, name: i.toString());
     }
   }
 }

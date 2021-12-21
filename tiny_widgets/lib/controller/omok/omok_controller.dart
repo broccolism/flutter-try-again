@@ -11,9 +11,12 @@ import 'package:tiny_widgets/src/enum/enums.dart';
 class OmokController extends GetxController {
   late final RxList<RxList<OmokStone>> _board;
   final Rx<OmokColor> _curTurn = OmokColor.BLACK.obs;
+  final Rx<OmokColor?> _winner = Rx<OmokColor?>(null);
 
   List<List<OmokStone>> get board => _board;
   OmokColor get curTurn => _curTurn.value;
+  bool get hasWinner => _winner.value != null;
+  OmokColor get winner => _winner.value!;
 
   @override
   void onInit() {
@@ -40,9 +43,13 @@ class OmokController extends GetxController {
 
     _board[pos.row][pos.col] = _curTurn.value.toStone();
 
-    _checkWinner();
+    OmokColor? winner = _checkWinner();
 
-    _curTurn.value = _curTurn.value.oppositeOmokColor();
+    if (winner != null) {
+      _winner.value = winner;
+    } else {
+      _curTurn.value = _curTurn.value.oppositeOmokColor();
+    }
   }
 
   OmokColor? _checkWinner() {
@@ -75,7 +82,7 @@ class OmokController extends GetxController {
           }
 
           if (hasFiveStones) {
-            log("@@@@@@@@@@@@@@@@@@@@@@@");
+            return _board[curPos.row][curPos.col].toOmokColor();
           }
         }
       }

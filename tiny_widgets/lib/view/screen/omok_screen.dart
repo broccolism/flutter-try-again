@@ -37,7 +37,9 @@ class OmokScreen extends GetView<OmokController> {
         color: controller.curTurn.color(),
         child: Center(
           child: Text(
-            "${controller.curTurn.toStringShort().toUpperCase()}'s turn",
+            controller.hasWinner
+                ? "Game Over"
+                : "${controller.curTurn.toStringShort().toUpperCase()}'s turn",
             style: Theme.of(Get.context!).textTheme.headline6!.copyWith(
                   color: controller.curTurn.oppositeColor(),
                   fontWeight: FontWeight.normal,
@@ -51,19 +53,41 @@ class OmokScreen extends GetView<OmokController> {
   Widget _boardWrapper() {
     return AspectRatio(
       aspectRatio: 1.0,
-      child: Container(
-        color: Colors.amber[100],
-        child: Container(
-          margin: EdgeInsets.all(4),
-          decoration: BoxDecoration(
-            color: Colors.amber[200],
-            border: Border.all(
-              width: 2.0,
-              color: Colors.black,
-            ),
+      child: Obx(
+        () => controller.hasWinner ? _winner() : _board(),
+      ),
+    );
+  }
+
+  Widget _winner() {
+    return Obx(
+      () => Container(
+        color: controller.winner.color(),
+        child: Center(
+          child: Text(
+            "${controller.winner.toStringShort().toUpperCase()} won!",
+            style: Theme.of(Get.context!).textTheme.headline5!.copyWith(
+                  color: controller.winner.oppositeColor(),
+                ),
           ),
-          child: OmokBoard(),
         ),
+      ),
+    );
+  }
+
+  Widget _board() {
+    return Container(
+      color: Colors.amber[100],
+      child: Container(
+        margin: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Colors.amber[200],
+          border: Border.all(
+            width: 2.0,
+            color: Colors.black,
+          ),
+        ),
+        child: OmokBoard(),
       ),
     );
   }

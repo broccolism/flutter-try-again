@@ -13,9 +13,11 @@ class ImplicitAnimationScreen extends StatefulWidget {
 class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
   final String TITLE = "I 💚 broccoli";
   final String IMAGE_NAME = "assets/images/broccoli.jpg";
-  final String DETAIL_BUTTON_TEXT = "Show details";
+  final String SHOW_DETAIL_BUTTON_TEXT = "Show details";
+  final String HIDE_DETAIL_BUTTON_TEXT = "Hide details";
   final String BODY_TEXT = "Type: Broccoli\nAge: 3\nJob: Being in a spoon";
 
+  // TODO: make a controller and let it manage opacity.
   double opacity = 0.0;
   @override
   Widget build(BuildContext context) {
@@ -52,12 +54,12 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
 
   Widget _detailButton() {
     return TextButton(
-      onPressed: () => setState(() => opacity = 1.0),
+      onPressed: () => setState(() => opacity = 1 - opacity),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(Colors.green[100]!),
       ),
       child: Text(
-        DETAIL_BUTTON_TEXT,
+        opacity == 1.0 ? HIDE_DETAIL_BUTTON_TEXT : SHOW_DETAIL_BUTTON_TEXT,
         style: Theme.of(context).textTheme.button,
       ),
     );

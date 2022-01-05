@@ -27,5 +27,9 @@ class MyPages {
       page: () => const OmokScreen(),
       binding: OmokBinding(),
     ),
+    GetPage(
+      name: ImplicitAnimationScreen.name,
+      page: () => const ImplicitAnimationScreen(),
+    ),
   ];
 }

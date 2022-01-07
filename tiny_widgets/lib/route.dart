@@ -31,5 +31,9 @@ class MyPages {
       name: ImplicitAnimationScreen.name,
       page: () => const ImplicitAnimationScreen(),
     ),
+    GetPage(
+      name: TransitionAnimationScreen.name,
+      page: () => const TransitionAnimationScreen(),
+    ),
   ];
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class TransitionAnimationScreen extends StatefulWidget {
   static const name = "/transition_animation";
@@ -12,18 +14,25 @@ class TransitionAnimationScreen extends StatefulWidget {
 
 class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
     with TickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
+  late final AnimationController _opacityController = AnimationController(
     duration: const Duration(seconds: 1),
     vsync: this,
   )..repeat(reverse: true);
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
+  late final Animation<double> _opacityAnimation = CurvedAnimation(
+    parent: _opacityController,
     curve: Curves.easeInToLinear,
   );
 
+  late final AnimationController _rotationController = AnimationController(
+    duration: const Duration(seconds: 1),
+    vsync: this,
+  );
+  late final Animation<double> _rotationAnimation =
+      CurvedAnimation(parent: _rotationController, curve: Curves.bounceIn);
+
   @override
   void dispose() {
-    _controller.dispose();
+    _opacityController.dispose();
     super.dispose();
   }
 
@@ -35,7 +44,9 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
           physics: ClampingScrollPhysics(),
           child: Column(
             children: [
-              _rectangle(),
+              _fadingRect(),
+              MyDivider(),
+              _rotatingRect(),
             ],
           ),
         ),
@@ -43,15 +54,45 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
     );
   }
 
-  Widget _rectangle() {
+  Widget _fadingRect() {
     return Center(
       child: FadeTransition(
-        opacity: _animation,
+        opacity: _opacityAnimation,
         child: Container(
           margin: EdgeInsets.all(60),
           color: Colors.green,
           width: 300,
           height: 100,
+        ),
+      ),
+    );
+  }
+
+  Widget _rotatingRect() {
+    return Center(
+      child: RotationTransition(
+        turns: _rotationAnimation,
+        child: GestureDetector(
+          onTap: () {
+            switch (_rotationController.status) {
+              case AnimationStatus.dismissed:
+                _rotationController.forward();
+                break;
+              case AnimationStatus.completed:
+                _rotationController.reverse();
+                break;
+              default:
+            }
+
+            // _rotationController.forward();
+            // _rotationController.reverse();
+          },
+          child: Container(
+            margin: EdgeInsets.all(90),
+            color: Colors.lightGreen,
+            width: 300,
+            height: 100,
+          ),
         ),
       ),
     );

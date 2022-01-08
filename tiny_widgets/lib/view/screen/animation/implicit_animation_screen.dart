@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class ImplicitAnimationScreen extends StatefulWidget {
   static const name = "/implicit_animation";
@@ -47,7 +48,7 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
             children: [
               SizedBox(height: 48),
               _imageAndDetails(),
-              _divider(),
+              MyDivider(),
               SizedBox(height: 48),
               _animatingShape(),
               SizedBox(height: 48),
@@ -107,20 +108,6 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
             .copyWith(color: Colors.green[700]),
         textAlign: TextAlign.center,
       ),
-    );
-  }
-
-  Widget _divider() {
-    return Column(
-      children: [
-        SizedBox(height: 12),
-        Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: 1,
-          color: Colors.grey[400],
-        ),
-        SizedBox(height: 12)
-      ],
     );
   }
 

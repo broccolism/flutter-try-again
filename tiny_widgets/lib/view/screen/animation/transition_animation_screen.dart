@@ -26,9 +26,12 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
   late final AnimationController _rotationController = AnimationController(
     duration: const Duration(seconds: 1),
     vsync: this,
+    upperBound: 0.6,
   );
   late final Animation<double> _rotationAnimation =
       CurvedAnimation(parent: _rotationController, curve: Curves.bounceIn);
+
+  final String TAP_ME_TEXT = "Tap me to rotate.";
 
   @override
   void dispose() {
@@ -84,6 +87,7 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
               default:
             }
 
+            // TODO: 이렇게 하면 안된다고 적기.
             // _rotationController.forward();
             // _rotationController.reverse();
           },
@@ -92,6 +96,9 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
             color: Colors.lightGreen,
             width: 300,
             height: 100,
+            child: Center(
+              child: Text(TAP_ME_TEXT),
+            ),
           ),
         ),
       ),

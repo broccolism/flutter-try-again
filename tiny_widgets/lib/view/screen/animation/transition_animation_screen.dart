@@ -86,10 +86,6 @@ class _TransitionAnimationScreenState extends State<TransitionAnimationScreen>
                 break;
               default:
             }
-
-            // TODO: 이렇게 하면 안된다고 적기.
-            // _rotationController.forward();
-            // _rotationController.reverse();
           },
           child: Container(
             margin: EdgeInsets.all(90),

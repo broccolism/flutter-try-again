@@ -18,7 +18,7 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
   final String IMAGE_NAME = "assets/images/broccoli.jpg";
   final String SHOW_DETAIL_BUTTON_TEXT = "Show details";
   final String HIDE_DETAIL_BUTTON_TEXT = "Hide details";
-  final String CHANGE_BUTTON_TEXT = "Chnage";
+  final String CHANGE_BUTTON_TEXT = "Change";
   final String BODY_TEXT = "Type: Broccoli\nAge: 3\nJob: Being in a spoon";
   final ButtonStyle _buttonStyle = ButtonStyle(
     backgroundColor: MaterialStateProperty.all<Color>(Colors.green[100]!),

@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   static const String OPEN_OMOK_SCREEN_BUTTON = "Omok Screen";
   static const String OPEN_IMPLICIT_ANIM_SCREEN_BUTTON = "Implicit Anim";
   static const String OPEN_TRANSITION_ANIM_SCREEN_BUTTON = "Transition Anim";
+  static const String OPEN_EXPLICIT_ANIM_SCREEN_BUTTON = "Explicit Anim";
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,12 @@ class HomeScreen extends StatelessWidget {
               onPressed: () => Get.toNamed(TransitionAnimationScreen.name),
               child: Text(
                 OPEN_TRANSITION_ANIM_SCREEN_BUTTON,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Get.toNamed(ExplicitAnimationScreen.name),
+              child: Text(
+                OPEN_EXPLICIT_ANIM_SCREEN_BUTTON,
               ),
             ),
           ],

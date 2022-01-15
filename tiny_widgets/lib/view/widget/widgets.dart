@@ -7,3 +7,5 @@ export 'auto_complete_search/auto_complete_search_bar.dart';
 
 export 'omok/board.dart';
 export 'omok/stones.dart';
+
+export 'gesture/photo_viewer.dart';

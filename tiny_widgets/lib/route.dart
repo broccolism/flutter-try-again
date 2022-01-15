@@ -1,4 +1,5 @@
 import 'package:get/route_manager.dart';
+import 'package:tiny_widgets/view/screen/gesture/photo_screen.dart';
 import 'package:tiny_widgets/view/screen/home_screen.dart';
 import 'package:tiny_widgets/view/screen/screens.dart';
 
@@ -38,6 +39,10 @@ class MyPages {
     GetPage(
       name: ExplicitAnimationScreen.name,
       page: () => const ExplicitAnimationScreen(),
+    ),
+    GetPage(
+      name: PhotoScreen.name,
+      page: () => const PhotoScreen(),
     ),
   ];
 }

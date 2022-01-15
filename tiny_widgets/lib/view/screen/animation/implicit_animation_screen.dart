@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class ImplicitAnimationScreen extends StatefulWidget {
@@ -15,7 +16,6 @@ class ImplicitAnimationScreen extends StatefulWidget {
 
 class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
   final String TITLE = "I 💚 broccoli";
-  final String IMAGE_NAME = "assets/images/broccoli.jpg";
   final String SHOW_DETAIL_BUTTON_TEXT = "Show details";
   final String HIDE_DETAIL_BUTTON_TEXT = "Hide details";
   final String CHANGE_BUTTON_TEXT = "Change";
@@ -81,7 +81,7 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
   }
 
   Widget _image() {
-    return Image.asset(IMAGE_NAME);
+    return Image.asset(CommonConstants.BROCCOLI_IMAGE_PATH);
   }
 
   Widget _detailButton() {

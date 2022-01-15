@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/src/constant/common_constants.dart';
 
 class PhotoViewer extends StatefulWidget {
   const PhotoViewer({Key? key}) : super(key: key);
@@ -9,12 +10,11 @@ class PhotoViewer extends StatefulWidget {
 
 class _PhotoViewerState extends State<PhotoViewer> {
   double _scale = 1.0;
-  final String IMAGE_NAME = "assets/images/broccoli";
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Image.asset(IMAGE_NAME),
+      child: Image.asset(CommonConstants.BROCCOLI_IMAGE_PATH),
     );
   }
 }

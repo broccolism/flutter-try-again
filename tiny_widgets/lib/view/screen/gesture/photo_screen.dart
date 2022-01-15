@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class PhotoScreen extends StatefulWidget {
   static const name = "/photo_screen";
@@ -11,6 +13,12 @@ class PhotoScreen extends StatefulWidget {
 class _PhotoScreenState extends State<PhotoScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+        children: [
+          PhotoViewer(),
+        ],
+      ),
+    );
   }
 }

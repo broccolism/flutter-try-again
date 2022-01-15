@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/src/constant/constants.dart';
@@ -11,8 +13,10 @@ class PhotoForeground extends StatefulWidget {
 
 class _PhotoForegroundState extends State<PhotoForeground>
     with TickerProviderStateMixin {
-  final double width = Get.size.width;
-  final double height = Get.size.height;
+  final double maxWidth = Get.size.width;
+  final double maxHeight = Get.size.height;
+  final double imageWidth = Get.size.width;
+  final double imageHeight = Get.size.height;
   double scale = 1.0;
   late AnimationController animationController;
 
@@ -29,16 +33,25 @@ class _PhotoForegroundState extends State<PhotoForeground>
 
   @override
   Widget build(BuildContext context) {
-    print(scale);
     return GestureDetector(
+      onDoubleTap: _onDoubleTap,
       onScaleStart: _onScaleStart,
       onScaleUpdate: _onScaleUpdate,
-      child: Image.asset(
-        CommonConstants.BROCCOLI_IMAGE_PATH,
-        width: width * scale,
-        height: height * scale,
+      child: Transform.scale(
+        scale: scale,
+        child: Image.asset(
+          CommonConstants.BROCCOLI_IMAGE_PATH,
+          width: _fitImageWidth(),
+          height: _fitImageHeight(),
+        ),
       ),
     );
+  }
+
+  void _onDoubleTap() {
+    setState(() {
+      scale = 1.0;
+    });
   }
 
   void _onScaleStart(ScaleStartDetails details) {
@@ -46,8 +59,12 @@ class _PhotoForegroundState extends State<PhotoForeground>
   }
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
+    print(details.localFocalPoint);
     setState(() {
       scale = details.scale;
     });
   }
+
+  double _fitImageWidth() => min(imageWidth * scale, maxWidth);
+  double _fitImageHeight() => min(imageHeight * scale, maxHeight);
 }

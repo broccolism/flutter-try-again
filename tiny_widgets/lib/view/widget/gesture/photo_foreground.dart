@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tiny_widgets/src/constant/constants.dart';
@@ -35,7 +36,6 @@ class _PhotoForegroundState extends State<PhotoForeground>
   Widget build(BuildContext context) {
     return GestureDetector(
       onDoubleTap: _onDoubleTap,
-      onScaleStart: _onScaleStart,
       onScaleUpdate: _onScaleUpdate,
       child: Transform.scale(
         scale: scale,
@@ -54,12 +54,7 @@ class _PhotoForegroundState extends State<PhotoForeground>
     });
   }
 
-  void _onScaleStart(ScaleStartDetails details) {
-    print(details.toString());
-  }
-
   void _onScaleUpdate(ScaleUpdateDetails details) {
-    print(details.localFocalPoint);
     setState(() {
       scale = details.scale;
     });

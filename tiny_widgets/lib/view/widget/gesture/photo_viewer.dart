@@ -30,6 +30,11 @@ class _PhotoViewerState extends State<PhotoViewer> {
   }
 
   Widget _foreground() {
-    return PhotoForeground();
+    return SizedBox(
+      height: Get.size.height,
+      child: Center(
+        child: PhotoForeground(),
+      ),
+    );
   }
 }

@@ -11,6 +11,8 @@ class PhotoViewer extends StatefulWidget {
 }
 
 class _PhotoViewerState extends State<PhotoViewer> {
+  Offset position = Offset(0, 0);
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -30,11 +32,31 @@ class _PhotoViewerState extends State<PhotoViewer> {
   }
 
   Widget _foreground() {
-    return SizedBox(
-      height: Get.size.height,
-      child: Center(
-        child: PhotoForeground(),
+    const Widget child = PhotoForeground();
+    return Positioned(
+      top: position.dy,
+      left: position.dx,
+      child: Draggable(
+        maxSimultaneousDrags: 1,
+        feedback: child,
+        onDragEnd: _onDragEnd,
+        childWhenDragging: Opacity(
+          opacity: 0,
+          child: child,
+        ),
+        child: SizedBox(
+          height: Get.size.height,
+          child: Center(
+            child: child,
+          ),
+        ),
       ),
     );
+  }
+
+  void _onDragEnd(DraggableDetails details) {
+    setState(() {
+      // position = details.offset;
+    });
   }
 }

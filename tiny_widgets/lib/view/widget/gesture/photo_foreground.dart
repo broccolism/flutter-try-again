@@ -47,8 +47,8 @@ class _PhotoForegroundState extends State<PhotoForeground>
           scale: scale,
           child: Image.asset(
             CommonConstants.DEFAULT_IMAGE_PATH,
-            width: _fitImageWidth(),
-            height: _fitImageHeight(),
+            width: _imageWidth(),
+            height: _imageHeight(),
           ),
         ),
       ),
@@ -74,6 +74,6 @@ class _PhotoForegroundState extends State<PhotoForeground>
     });
   }
 
-  double _fitImageWidth() => min(imageWidth * scale, maxWidth);
-  double _fitImageHeight() => min(imageHeight * scale, maxHeight);
+  double _imageWidth() => min(imageWidth * scale, maxWidth);
+  double _imageHeight() => min(imageHeight * scale, maxHeight);
 }

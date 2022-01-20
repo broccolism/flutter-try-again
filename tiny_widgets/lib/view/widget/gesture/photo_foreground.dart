@@ -18,7 +18,10 @@ class _PhotoForegroundState extends State<PhotoForeground>
   final double maxHeight = Get.size.height;
   final double imageWidth = Get.size.width;
   final double imageHeight = Get.size.height;
+
+  Offset position = Offset(0, 0);
   double scale = 1.0;
+
   late AnimationController animationController;
 
   @override
@@ -36,13 +39,17 @@ class _PhotoForegroundState extends State<PhotoForeground>
   Widget build(BuildContext context) {
     return GestureDetector(
       onDoubleTap: _onDoubleTap,
+      onHorizontalDragUpdate: _onHorizontalDragUpdate,
       onScaleUpdate: _onScaleUpdate,
-      child: Transform.scale(
-        scale: scale,
-        child: Image.asset(
-          CommonConstants.BROCCOLI_IMAGE_PATH,
-          width: _fitImageWidth(),
-          height: _fitImageHeight(),
+      child: Transform.translate(
+        offset: position,
+        child: Transform.scale(
+          scale: scale,
+          child: Image.asset(
+            CommonConstants.DEFAULT_IMAGE_PATH,
+            width: _fitImageWidth(),
+            height: _fitImageHeight(),
+          ),
         ),
       ),
     );
@@ -57,6 +64,13 @@ class _PhotoForegroundState extends State<PhotoForeground>
   void _onScaleUpdate(ScaleUpdateDetails details) {
     setState(() {
       scale = details.scale;
+    });
+  }
+
+  void _onHorizontalDragUpdate(DragUpdateDetails details) {
+    double dx = min(details.globalPosition.dx, maxWidth);
+    setState(() {
+      position = Offset(dx, position.dy);
     });
   }
 

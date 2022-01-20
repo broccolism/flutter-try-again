@@ -36,6 +36,6 @@ class MyNetworkImage extends StatelessWidget {
   }
 
   Widget _defaultImge() {
-    return Image.asset(CommonConstants.BROCCOLI_IMAGE_PATH);
+    return Image.asset(CommonConstants.DEFAULT_IMAGE_PATH);
   }
 }

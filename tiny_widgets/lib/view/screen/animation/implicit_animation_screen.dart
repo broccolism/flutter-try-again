@@ -81,7 +81,7 @@ class _ImplicitAnimationScreenState extends State<ImplicitAnimationScreen> {
   }
 
   Widget _image() {
-    return Image.asset(CommonConstants.BROCCOLI_IMAGE_PATH);
+    return Image.asset(CommonConstants.DEFAULT_IMAGE_PATH);
   }
 
   Widget _detailButton() {

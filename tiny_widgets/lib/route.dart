@@ -44,5 +44,9 @@ class MyPages {
       name: PhotoScreen.name,
       page: () => const PhotoScreen(),
     ),
+    GetPage(
+      name: NewsScreen.name,
+      page: () => const NewsScreen(),
+    ),
   ];
 }

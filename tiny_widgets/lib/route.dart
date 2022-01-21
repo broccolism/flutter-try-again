@@ -6,7 +6,7 @@ import 'package:tiny_widgets/view/screen/screens.dart';
 import 'binding/bindings.dart';
 
 class MyPages {
-  MyPages._();
+  // MyPages._();
 
   static final List<GetPage> pages = [
     GetPage(

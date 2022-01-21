@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 
 class NewsHeader extends StatelessWidget {
   const NewsHeader({Key? key}) : super(key: key);
+  static const String logoText = "N";
+  static const String titleText = "뉴스";
 
   @override
   Widget build(BuildContext context) {
@@ -14,26 +16,34 @@ class NewsHeader extends StatelessWidget {
         padding: EdgeInsets.all(12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
-            Text(
-              "N",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 28,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
+          children: [
+            _logo(),
             SizedBox(width: 12),
-            Text(
-              "뉴스",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.w900,
-              ),
-            ),
+            _title(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _logo() {
+    return Text(
+      logoText,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 28,
+        fontWeight: FontWeight.w900,
+      ),
+    );
+  }
+
+  Widget _title() {
+    return Text(
+      titleText,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.w900,
       ),
     );
   }

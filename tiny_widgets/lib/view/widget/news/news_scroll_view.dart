@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
@@ -7,7 +8,15 @@ class NewsScrollView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: [],
+      slivers: [
+        _header(),
+      ],
+    );
+  }
+
+  Widget _header() {
+    return SliverToBoxAdapter(
+      child: NewsHeader(),
     );
   }
 }

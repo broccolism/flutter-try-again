@@ -10,26 +10,30 @@ class NewsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.indigo[800],
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(12),
-            child: Text(
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const [
+            Text(
               "N",
               style: TextStyle(
                 color: Colors.white,
+                fontSize: 28,
                 fontWeight: FontWeight.w900,
               ),
             ),
-          ),
-          Text(
-            "뉴스",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w900,
+            SizedBox(width: 12),
+            Text(
+              "뉴스",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.w900,
+              ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -8,8 +8,10 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: NewsScrollView(),
+    return SafeArea(
+      child: Scaffold(
+        body: NewsScrollView(),
+      ),
     );
   }
 }

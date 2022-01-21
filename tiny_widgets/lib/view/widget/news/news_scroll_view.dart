@@ -10,6 +10,7 @@ class NewsScrollView extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         _header(),
+        _divider(),
         _option(),
       ],
     );
@@ -24,6 +25,14 @@ class NewsScrollView extends StatelessWidget {
   Widget _option() {
     return SliverToBoxAdapter(
       child: OptionTile(),
+    );
+  }
+
+  Widget _divider() {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: 10,
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/src/constant/constants.dart';
 
 class NewsHeader extends StatelessWidget {
   const NewsHeader({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class NewsHeader extends StatelessWidget {
     return Container(
       color: Colors.indigo[800],
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(NewsConstants.tilePaddingHorizontal),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

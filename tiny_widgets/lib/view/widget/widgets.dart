@@ -20,3 +20,4 @@ export 'news/scrollable_news_tile.dart';
 export 'news/short_news_tile.dart';
 export 'news/subscription_tile.dart';
 export 'news/themes_tile.dart';
+export 'news/news_tile_layout.dart';

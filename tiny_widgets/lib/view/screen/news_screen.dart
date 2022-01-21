@@ -10,6 +10,7 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.indigo[50],
         body: NewsScrollView(),
       ),
     );

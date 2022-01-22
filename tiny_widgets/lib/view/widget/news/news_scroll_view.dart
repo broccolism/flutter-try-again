@@ -12,6 +12,8 @@ class NewsScrollView extends StatelessWidget {
         _header(),
         _divider(),
         _option(),
+        _divider(),
+        _defaultNewsTile(),
       ],
     );
   }
@@ -25,6 +27,12 @@ class NewsScrollView extends StatelessWidget {
   Widget _option() {
     return SliverToBoxAdapter(
       child: OptionTile(),
+    );
+  }
+
+  Widget _defaultNewsTile() {
+    return SliverToBoxAdapter(
+      child: DefaultNewsTile(),
     );
   }
 

@@ -45,10 +45,13 @@ class OptionTile extends GetView<NewsOptionController> {
           style: TextStyle(fontSize: 15),
         ),
         SizedBox(width: 2),
-        Obx(
-          () => Switch(
-            value: controller.isExpanded,
-            onChanged: (_) => controller.changeExpandingOption(),
+        SizedBox(
+          height: 16,
+          child: Obx(
+            () => Switch(
+              value: controller.isExpanded,
+              onChanged: (_) => controller.changeExpandingOption(),
+            ),
           ),
         ),
       ],

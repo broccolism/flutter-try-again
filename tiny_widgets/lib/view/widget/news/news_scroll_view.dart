@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:tiny_widgets/model/models.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
 class NewsScrollView extends StatelessWidget {
@@ -32,7 +33,10 @@ class NewsScrollView extends StatelessWidget {
 
   Widget _defaultNewsTile() {
     return SliverToBoxAdapter(
-      child: DefaultNewsTile(),
+      child: DefaultNewsTile(
+        theme: NewsData.cloud,
+        articles: NewsData.cloudArticles,
+      ),
     );
   }
 

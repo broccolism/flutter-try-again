@@ -9,5 +9,5 @@ class NewsConstants {
   static const double tilePaddingVertical = 20;
   static final TextStyle titleTextStyle = TextStyle(fontSize: 20);
   static final TextStyle companyTextStyle =
-      TextStyle(fontSize: 18, fontWeight: FontWeight.w300, color: Colors.grey);
+      TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.grey);
 }

@@ -11,7 +11,7 @@ class NewsData {
       title: "넥슨, 네이버와 만든 합작법인에 150억원 출자",
       company: "조선비즈",
       createdAt: DateTime.now(),
-      replyCount: 0,
+      replyCount: 70,
       imageUrl:
           "https://cdn.hellodd.com/news/photo/202201/95571_310186_052.jpg",
       theme: nexon,
@@ -20,7 +20,7 @@ class NewsData {
       title: "넷플릭스 하청 기지 한국...정부, 배달비 비교",
       company: "아이뉴스24",
       createdAt: DateTime.now(),
-      replyCount: 0,
+      replyCount: 40,
       imageUrl:
           "https://cdn.hellodd.com/news/photo/202201/95571_310186_052.jpg",
       theme: nexon,
@@ -29,7 +29,7 @@ class NewsData {
       title: "넥슨, 네이버 문화 콘텐츠 합작법인에 150억원 투자",
       company: "한국일보",
       createdAt: DateTime.now(),
-      replyCount: 0,
+      replyCount: 20,
       imageUrl:
           "https://cdn.hellodd.com/news/photo/202201/95571_310186_052.jpg",
       theme: nexon,
@@ -38,7 +38,7 @@ class NewsData {
       title: "넥슨, 네이버 등 5개사와 JV 결성.. 150억 ",
       company: "파이낸셜뉴스",
       createdAt: DateTime.now(),
-      replyCount: 0,
+      replyCount: 50,
       imageUrl:
           "https://cdn.hellodd.com/news/photo/202201/95571_310186_052.jpg",
       theme: nexon,
@@ -58,7 +58,7 @@ class NewsData {
         title: "[주간 클라우드 동향/1월3] 한 해 농사 준비 중인",
         company: "디지털데일리",
         createdAt: DateTime.now(),
-        replyCount: 0,
+        replyCount: 10,
         imageUrl:
             "https://cdn.nextdaily.co.kr/news/photo/202201/202701_302826_443.jpg",
         theme: cloud),
@@ -66,7 +66,7 @@ class NewsData {
         title: "[주간 클라우드 동향/1월2] 입모아 '클라우드'",
         company: "디지털데일리",
         createdAt: DateTime.now(),
-        replyCount: 0,
+        replyCount: 100,
         imageUrl:
             "https://cdn.nextdaily.co.kr/news/photo/202201/202701_302826_443.jpg",
         theme: cloud),
@@ -85,7 +85,7 @@ class NewsData {
         title: "[IT클로즈업] IPO 앞둔 마켓컬리, 갑질 의혹 등 연이은 악재 '시끌시끌'",
         company: "디지털데일리",
         createdAt: DateTime.now(),
-        replyCount: 0,
+        replyCount: 30,
         imageUrl:
             "https://www.ddaily.co.kr/data/photos/cdn/20220104/art_1642979646.jpg",
         theme: tech),
@@ -93,7 +93,7 @@ class NewsData {
         title: "미국, 반도체 '한국/대만' 집중 해소",
         company: "디지털데일리",
         createdAt: DateTime.now(),
-        replyCount: 0,
+        replyCount: 10,
         imageUrl:
             "https://www.ddaily.co.kr/data/photos/cdn/20220104/art_1642979646.jpg",
         theme: tech),
@@ -101,7 +101,7 @@ class NewsData {
         title: "'일본 시대 끝났다'...꿈의 영업이익",
         company: "디지털데일리",
         createdAt: DateTime.now(),
-        replyCount: 0,
+        replyCount: 100,
         imageUrl:
             "https://www.ddaily.co.kr/data/photos/cdn/20220104/art_1642979646.jpg",
         theme: tech),

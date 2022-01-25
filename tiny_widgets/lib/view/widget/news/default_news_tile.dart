@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -85,17 +86,50 @@ class DefaultNewsTile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 2,
-          height: 12,
-          color: Colors.grey,
+          width: 4,
+          height: 36,
+          color: Colors.grey[300],
         ),
+        SizedBox(width: 8),
         Flexible(
-          child: Text(article.title),
+          child: Text(
+            article.title,
+            style: NewsConstants.titleTextStyle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         Text(
           article.company,
           style: NewsConstants.companyTextStyle,
         ),
+        article.replyCount > 0 ? _replyCount(article.replyCount) : SizedBox(),
+      ],
+    );
+  }
+
+  Widget _replyCount(int replyCount) {
+    return Row(
+      children: [
+        SizedBox(width: 4),
+        Container(
+          width: 2,
+          height: 15,
+          color: Colors.grey[300],
+        ),
+        SizedBox(width: 6),
+        Icon(
+          CupertinoIcons.text_bubble,
+          size: 18,
+          color: Colors.grey[500],
+        ),
+        SizedBox(width: 4),
+        Text("$replyCount+",
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w300,
+              color: Colors.grey,
+            ))
       ],
     );
   }

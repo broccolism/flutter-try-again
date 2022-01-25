@@ -62,6 +62,7 @@ class DefaultNewsTile extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
+              SizedBox(height: 8),
               Text(
                 article.company,
                 style: NewsConstants.companyTextStyle,
@@ -74,6 +75,28 @@ class DefaultNewsTile extends StatelessWidget {
   }
 
   Widget _otherArticles() {
-    return Container();
+    return Column(
+      children:
+          articles.map((Article article) => _linedArticle(article)).toList(),
+    );
+  }
+
+  Widget _linedArticle(Article article) {
+    return Row(
+      children: [
+        Container(
+          width: 2,
+          height: 12,
+          color: Colors.grey,
+        ),
+        Flexible(
+          child: Text(article.title),
+        ),
+        Text(
+          article.company,
+          style: NewsConstants.companyTextStyle,
+        ),
+      ],
+    );
   }
 }

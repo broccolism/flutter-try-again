@@ -3,11 +3,16 @@ import 'package:flutter/widgets.dart';
 import 'package:tiny_widgets/src/constant/constants.dart';
 
 class NewsTileLayout extends StatelessWidget {
+  final bool hasBottomDivider;
+  final Widget child;
+
   const NewsTileLayout({
     Key? key,
     required this.child,
+    this.hasBottomDivider = true,
   }) : super(key: key);
-  final Widget child;
+
+  static const double bottomDividerHeight = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +21,9 @@ class NewsTileLayout extends StatelessWidget {
         horizontal: NewsConstants.tilePaddingHorizontal,
         vertical: NewsConstants.tilePaddingVertical,
       ),
+      margin: hasBottomDivider
+          ? EdgeInsets.only(bottom: bottomDividerHeight)
+          : null,
       color: Colors.white,
       child: child,
     );

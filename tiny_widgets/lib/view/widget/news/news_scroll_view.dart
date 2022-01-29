@@ -13,10 +13,9 @@ class NewsScrollView extends GetView<NewsController> {
     return CustomScrollView(
       slivers: [
         _header(),
-        _divider(),
         _option(),
-        _divider(),
         _defaultNewsTiles(),
+        _subscriptionTile(),
       ],
     );
   }
@@ -37,22 +36,16 @@ class NewsScrollView extends GetView<NewsController> {
     return SliverToBoxAdapter(
       child: Column(
         children: controller.articles
-            .map((ThemeAndArticles item) => Column(
-                  children: [
-                    DefaultNewsTile(theme: item.theme, articles: item.articles),
-                    SizedBox(height: 10),
-                  ],
-                ))
+            .map((ThemeAndArticles item) =>
+                DefaultNewsTile(theme: item.theme, articles: item.articles))
             .toList(),
       ),
     );
   }
 
-  Widget _divider() {
+  Widget _subscriptionTile() {
     return SliverToBoxAdapter(
-      child: SizedBox(
-        height: 10,
-      ),
+      child: SubscriptionTile(),
     );
   }
 }

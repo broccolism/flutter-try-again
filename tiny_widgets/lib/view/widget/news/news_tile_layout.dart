@@ -4,11 +4,13 @@ import 'package:tiny_widgets/src/constant/constants.dart';
 
 class NewsTileLayout extends StatelessWidget {
   final bool hasBottomDivider;
+  final bool hasPadding;
   final Widget child;
 
   const NewsTileLayout({
     Key? key,
     required this.child,
+    this.hasPadding = true,
     this.hasBottomDivider = true,
   }) : super(key: key);
 
@@ -17,10 +19,12 @@ class NewsTileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: NewsConstants.tilePaddingHorizontal,
-        vertical: NewsConstants.tilePaddingVertical,
-      ),
+      padding: hasPadding
+          ? EdgeInsets.symmetric(
+              horizontal: NewsConstants.tilePaddingHorizontal,
+              vertical: NewsConstants.tilePaddingVertical,
+            )
+          : EdgeInsets.zero,
       margin: hasBottomDivider
           ? EdgeInsets.only(bottom: bottomDividerHeight)
           : null,

@@ -16,6 +16,7 @@ class NewsScrollView extends GetView<NewsController> {
         _option(),
         _defaultNewsTiles(),
         _subscriptionTile(),
+        _adTile(),
       ],
     );
   }
@@ -46,6 +47,12 @@ class NewsScrollView extends GetView<NewsController> {
   Widget _subscriptionTile() {
     return SliverToBoxAdapter(
       child: SubscriptionTile(),
+    );
+  }
+
+  Widget _adTile() {
+    return SliverToBoxAdapter(
+      child: AdTile(),
     );
   }
 }

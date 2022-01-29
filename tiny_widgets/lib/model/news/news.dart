@@ -1,3 +1,10 @@
+class ThemeAndArticles {
+  final List<Article> articles;
+  final NewsTheme theme;
+
+  ThemeAndArticles({required this.articles, required this.theme});
+}
+
 class Article {
   final String title;
   final String company;

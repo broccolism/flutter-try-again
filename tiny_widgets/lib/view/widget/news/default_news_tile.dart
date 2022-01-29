@@ -124,12 +124,14 @@ class DefaultNewsTile extends StatelessWidget {
           color: Colors.grey[500],
         ),
         SizedBox(width: 4),
-        Text("$replyCount+",
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w300,
-              color: Colors.grey,
-            ))
+        Text(
+          "$replyCount+",
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w300,
+            color: Colors.grey,
+          ),
+        ),
       ],
     );
   }

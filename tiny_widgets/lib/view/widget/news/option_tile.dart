@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:tiny_widgets/controller/controllers.dart';
 import 'package:tiny_widgets/view/widget/widgets.dart';
 
-class OptionTile extends GetView<NewsOptionController> {
+class OptionTile extends GetView<NewsController> {
   const OptionTile({Key? key}) : super(key: key);
   static const String optionTitleText = "헤드라인 뉴스";
   static const String optionText = "펼쳐보기";

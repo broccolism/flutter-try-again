@@ -4,6 +4,6 @@ import 'package:tiny_widgets/controller/controllers.dart';
 class NewsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(NewsOptionController());
+    Get.put(NewsController());
   }
 }

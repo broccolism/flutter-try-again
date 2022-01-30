@@ -9,3 +9,11 @@ export 'omok/board.dart';
 export 'omok/stones.dart';
 
 export 'gesture/photo_viewer.dart';
+
+export 'news/ad_tile.dart';
+export 'news/default_news_tile.dart';
+export 'news/news_header.dart';
+export 'news/news_scroll_view.dart';
+export 'news/option_tile.dart';
+export 'news/subscription_tile.dart';
+export 'news/news_tile_layout.dart';

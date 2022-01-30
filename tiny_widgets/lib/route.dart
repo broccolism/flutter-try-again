@@ -1,12 +1,9 @@
 import 'package:get/route_manager.dart';
-import 'package:tiny_widgets/view/screen/gesture/photo_screen.dart';
-import 'package:tiny_widgets/view/screen/home_screen.dart';
 import 'package:tiny_widgets/view/screen/screens.dart';
-
 import 'binding/bindings.dart';
 
 class MyPages {
-  MyPages._();
+  // MyPages._();
 
   static final List<GetPage> pages = [
     GetPage(
@@ -43,6 +40,11 @@ class MyPages {
     GetPage(
       name: PhotoScreen.name,
       page: () => const PhotoScreen(),
+    ),
+    GetPage(
+      name: NewsScreen.name,
+      page: () => const NewsScreen(),
+      binding: NewsBinding(),
     ),
   ];
 }
